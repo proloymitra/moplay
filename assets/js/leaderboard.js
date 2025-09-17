@@ -85,7 +85,7 @@ class Leaderboard {
     async loadLeaderboard() {
         try {
             // In a real implementation, this would fetch from the API
-            // const response = await fetch(`/wp-json/playinmo/v1/leaderboard?${this.getQueryParams()}`);
+            // const response = await fetch(`/wp-json/moplay/v1/leaderboard?${this.getQueryParams()}`);
             // const data = await response.json();
             
             // For demo, use sample data

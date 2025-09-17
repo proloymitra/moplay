@@ -1,7 +1,7 @@
-// Service Worker for PlayInMo - Caching Strategy
-const CACHE_NAME = 'playinmo-v1.4';
-const STATIC_CACHE = 'playinmo-static-v1.4';
-const DYNAMIC_CACHE = 'playinmo-dynamic-v1.4';
+// Service Worker for moplay - Caching Strategy
+const CACHE_NAME = 'moplay-v1.4';
+const STATIC_CACHE = 'moplay-static-v1.4';
+const DYNAMIC_CACHE = 'moplay-dynamic-v1.4';
 
 // Files to cache immediately
 const STATIC_FILES = [

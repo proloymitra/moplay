@@ -54,7 +54,7 @@ class GamePlayer {
             this.displayGameInfo(game);
             
             // Also set the title immediately for masked games
-            document.title = `PlayInMo - ${gameInfo.title}`;
+            document.title = `moplay - ${gameInfo.title}`;
             
             this.startMaskedGame(gameInfo.url);
             
@@ -128,7 +128,7 @@ class GamePlayer {
     async loadGame(gameId) {
         try {
             // In a real implementation, this would fetch from the WordPress API
-            const response = await fetch(`/wp-json/playinmo/v1/games/${gameId}`);
+            const response = await fetch(`/wp-json/moplay/v1/games/${gameId}`);
             const game = await response.json();
             
             this.currentGame = game;
@@ -193,7 +193,7 @@ class GamePlayer {
 
     displayGameInfo(game) {
         // Update page title with game name
-        document.title = `PlayInMo - ${game.title}`;
+        document.title = `moplay - ${game.title}`;
         
         // Track page title change
         if (typeof gtag !== 'undefined') {
@@ -418,7 +418,7 @@ class GamePlayer {
 
     async recordGamePlay(action, score = 0, playTime = 0) {
         try {
-            await fetch('/wp-json/playinmo/v1/game-plays', {
+            await fetch('/wp-json/moplay/v1/game-plays', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -580,7 +580,7 @@ class GamePlayer {
 
     async submitRating(rating) {
         try {
-            await fetch('/wp-json/playinmo/v1/games/rate', {
+            await fetch('/wp-json/moplay/v1/games/rate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -635,7 +635,7 @@ class GamePlayer {
 
     async sendCommentToServer(comment) {
         try {
-            await fetch('/wp-json/playinmo/v1/games/comment', {
+            await fetch('/wp-json/moplay/v1/games/comment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -676,7 +676,7 @@ class GamePlayer {
 
     goBackToGames() {
         // Reset page title
-        document.title = 'PlayInMo - Free Online Games';
+        document.title = 'moplay - Free Online Games';
         
         // Track back to games event
         if (typeof gtag !== 'undefined') {
@@ -702,7 +702,7 @@ class GamePlayer {
 
     showError(message) {
         // Update page title for error state
-        document.title = `PlayInMo - Error Loading Game`;
+        document.title = `moplay - Error Loading Game`;
         
         const gameContainer = document.getElementById('gameContainer');
         gameContainer.innerHTML = `

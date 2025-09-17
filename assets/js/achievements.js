@@ -211,7 +211,7 @@ class AchievementsSystem {
     loadUserProgress() {
         // In a real app, this would load from the server
         // For demo, simulate some unlocked achievements
-        const savedProgress = localStorage.getItem('playinmo_achievements');
+        const savedProgress = localStorage.getItem('moplay_achievements');
         if (savedProgress) {
             const progress = JSON.parse(savedProgress);
             this.userAchievements = new Set(progress.unlocked || []);
@@ -233,7 +233,7 @@ class AchievementsSystem {
             points: this.userPoints,
             streak: this.dailyStreak
         };
-        localStorage.setItem('playinmo_achievements', JSON.stringify(progress));
+        localStorage.setItem('moplay_achievements', JSON.stringify(progress));
     }
 
     bindEvents() {

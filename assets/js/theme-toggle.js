@@ -1,6 +1,6 @@
 class ThemeToggle {
     constructor() {
-        this.currentTheme = localStorage.getItem('playinmo-theme') || 'dark';
+        this.currentTheme = localStorage.getItem('moplay-theme') || 'dark';
         this.init();
     }
 
@@ -45,7 +45,7 @@ class ThemeToggle {
         // Listen for system theme changes
         if (window.matchMedia) {
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (!localStorage.getItem('playinmo-theme')) {
+                if (!localStorage.getItem('moplay-theme')) {
                     this.applyTheme(e.matches ? 'dark' : 'light');
                 }
             });
@@ -83,7 +83,7 @@ class ThemeToggle {
     }
 
     saveTheme() {
-        localStorage.setItem('playinmo-theme', this.currentTheme);
+        localStorage.setItem('moplay-theme', this.currentTheme);
     }
 
     updateToggleIcon() {
@@ -156,7 +156,7 @@ class ThemeToggle {
 
     // Auto-detect system preference if no saved preference
     detectSystemTheme() {
-        if (!localStorage.getItem('playinmo-theme')) {
+        if (!localStorage.getItem('moplay-theme')) {
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             this.setTheme(prefersDark ? 'dark' : 'light');
         }

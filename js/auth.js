@@ -1,4 +1,4 @@
-// Supabase Authentication Handler for PlayInMo
+// Supabase Authentication Handler for moplay
 class AuthManager {
     constructor() {
         this.currentUser = null;
@@ -183,7 +183,7 @@ class AuthManager {
                 options: {
                     redirectTo: window.location.hostname === 'localhost' 
                         ? `http://localhost:${window.location.port}`
-                        : 'https://playinmo.com'
+                        : 'https://moplay.com'
                 }
             });
 

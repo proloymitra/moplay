@@ -1,7 +1,7 @@
 {
-  "name": "PlayInMo - Free Online Games",
-  "short_name": "PlayInMo",
-  "description": "Play thousands of free online games at PlayInMo. Action, puzzle, racing, strategy games and more!",
+  "name": "moplay - Free Online Games",
+  "short_name": "moplay",
+  "description": "Play thousands of free online games at moplay. Action, puzzle, racing, strategy games and more!",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",

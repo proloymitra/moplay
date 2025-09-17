@@ -1,4 +1,4 @@
-# Contentful CMS Setup Guide for PlayInMo
+# Contentful CMS Setup Guide for moplay
 
 ## Step 1: Get Your Contentful Credentials
 
@@ -12,7 +12,7 @@
 3. **Generate Access Token**
    - Go to Settings → API keys
    - Click **Add API key** 
-   - Give it a name like "PlayInMo Website"
+   - Give it a name like "moplay Website"
    - Copy the **Content Delivery API - access token** (it looks like: `abc123def456ghi789...`)
 
 ## Step 2: Configure Your Website
@@ -187,4 +187,4 @@ Once everything is working:
 4. **Implement user favorites**
 5. **Add game ratings and reviews**
 
-Your PlayInMo website is now powered by Contentful CMS! You can manage all your games and content through the Contentful web interface.
+Your moplay website is now powered by Contentful CMS! You can manage all your games and content through the Contentful web interface.

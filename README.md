@@ -1,4 +1,4 @@
-# PlayInMo - H5 Gaming Website
+# moplay - H5 Gaming Website
 
 A comprehensive HTML5 gaming platform with WordPress backend, featuring user management, achievements, leaderboards, and ad integration.
 
@@ -47,7 +47,7 @@ A comprehensive HTML5 gaming platform with WordPress backend, featuring user man
 1. **Clone/Download the project**
    ```bash
    git clone <repository-url>
-   cd playinmo
+   cd moplay
    ```
 
 2. **Setup WordPress**
@@ -65,13 +65,13 @@ A comprehensive HTML5 gaming platform with WordPress backend, featuring user man
    - Configure database connection in WordPress
 
 5. **Domain Configuration**
-   - Update all references to `playinmo.com` with your domain
+   - Update all references to `moplay.com` with your domain
    - Configure WordPress site URL and home URL
 
 ## File Structure
 
 ```
-playinmo/
+moplay/
 ├── index.html              # Homepage
 ├── game-player.html        # Game player page
 ├── leaderboard.html        # Leaderboard page
@@ -130,18 +130,18 @@ playinmo/
 - **Tags**: Game tagging system
 
 ### REST API Endpoints
-- `GET /wp-json/playinmo/v1/games` - Get games list
-- `GET /wp-json/playinmo/v1/games/{id}` - Get single game
-- `POST /wp-json/playinmo/v1/game-plays` - Record game play
-- `GET /wp-json/playinmo/v1/leaderboard` - Get leaderboard
-- `GET /wp-json/playinmo/v1/achievements` - Get achievements
-- `GET /wp-json/playinmo/v1/chat` - Get chat messages
-- `POST /wp-json/playinmo/v1/chat` - Send chat message
+- `GET /wp-json/moplay/v1/games` - Get games list
+- `GET /wp-json/moplay/v1/games/{id}` - Get single game
+- `POST /wp-json/moplay/v1/game-plays` - Record game play
+- `GET /wp-json/moplay/v1/leaderboard` - Get leaderboard
+- `GET /wp-json/moplay/v1/achievements` - Get achievements
+- `GET /wp-json/moplay/v1/chat` - Get chat messages
+- `POST /wp-json/moplay/v1/chat` - Send chat message
 
 ### Database Tables
-- `playinmo_game_plays` - User game play records
-- `playinmo_user_achievements` - User achievement unlocks
-- `playinmo_chat_messages` - Chat message history
+- `moplay_game_plays` - User game play records
+- `moplay_user_achievements` - User achievement unlocks
+- `moplay_chat_messages` - Chat message history
 
 ## AdSense Requirements Checklist
 
@@ -169,14 +169,14 @@ playinmo/
    git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin https://github.com/yourusername/playinmo.git
+   git remote add origin https://github.com/yourusername/moplay.git
    git push -u origin main
    ```
 
 3. **Enable GitHub Pages**
    - Go to repository settings
    - Enable GitHub Pages from main branch
-   - Configure custom domain (playinmo.com)
+   - Configure custom domain (moplay.com)
 
 4. **Domain Configuration**
    - Add CNAME file with your domain
@@ -198,7 +198,7 @@ CNAME   www     yourusername.github.io
 ### Custom Domain File
 Create a `CNAME` file in the root directory:
 ```
-playinmo.com
+moplay.com
 ```
 
 ## Development
@@ -225,7 +225,7 @@ playinmo.com
 ## Support
 
 For support and questions:
-- Email: support@playinmo.com
+- Email: support@moplay.com
 - GitHub Issues: Create an issue in this repository
 
 ## License

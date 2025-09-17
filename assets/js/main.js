@@ -426,7 +426,7 @@ class GameSite {
     // Chat functionality
     initChat() {
         this.chatMessages = [
-            { username: 'GameMaster', message: 'Welcome to PlayInMo!', timestamp: new Date() },
+            { username: 'GameMaster', message: 'Welcome to moplay!', timestamp: new Date() },
             { username: 'ProGamer', message: 'Anyone up for a challenge?', timestamp: new Date() }
         ];
         this.renderChatMessages();
@@ -491,7 +491,7 @@ class GameSite {
     // API methods for WordPress integration
     async loadGamesFromAPI() {
         try {
-            const response = await fetch('/wp-json/playinmo/v1/games');
+            const response = await fetch('/wp-json/moplay/v1/games');
             const games = await response.json();
             this.games = games;
             this.loadFeaturedGames();
@@ -505,7 +505,7 @@ class GameSite {
         if (!this.currentUser) return;
         
         try {
-            await fetch('/wp-json/playinmo/v1/game-plays', {
+            await fetch('/wp-json/moplay/v1/game-plays', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -523,7 +523,7 @@ class GameSite {
 
     async loadLeaderboard() {
         try {
-            const response = await fetch('/wp-json/playinmo/v1/leaderboard');
+            const response = await fetch('/wp-json/moplay/v1/leaderboard');
             this.leaderboard = await response.json();
         } catch (error) {
             console.error('Failed to load leaderboard:', error);

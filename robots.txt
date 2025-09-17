@@ -19,4 +19,4 @@ Allow: /privacy-policy.html
 Allow: /terms-of-service.html
 
 # Sitemap location
-Sitemap: https://playinmo.com/sitemap.xml
+Sitemap: https://moplay.com/sitemap.xml

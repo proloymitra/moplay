@@ -1,4 +1,4 @@
-// Community Chat System for PlayInMo
+// Community Chat System for moplay
 class ChatManager {
     constructor() {
         this.supabase = window.supabaseClient;
