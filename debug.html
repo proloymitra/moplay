@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Supabase Auth Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+    <div class="container mt-6">
+        <div class="box">
+            <h1 class="title">Supabase Authentication Debug</h1>
+            
+            <div class="content">
+                <h2>Debug Information</h2>
+                <div id="debugInfo"></div>
+                
+                <h2>Test Buttons</h2>
+                <div class="buttons">
+                    <button class="button is-primary" onclick="testSupabase()">Test Supabase</button>
+                    <button class="button is-info" onclick="testAuth()">Test Auth Manager</button>
+                    <button class="button is-success" onclick="openLoginModal()">Open Login Modal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal (simplified) -->
+    <div class="modal" id="loginModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Test Login</p>
+                <button class="delete" onclick="closeLoginModal()"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="field">
+                    <label class="label">Email</label>
+                    <input class="input" type="email" id="testEmail" value="test@example.com">
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <input class="input" type="password" id="testPassword" value="password123">
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary" onclick="testLogin()">Test Login</button>
+                <button class="button" onclick="closeLoginModal()">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Load Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script>
+        function updateDebugInfo() {
+            const debugDiv = document.getElementById('debugInfo');
+            const info = [];
+            
+            info.push(`Supabase loaded: ${typeof window.supabase !== 'undefined'}`);
+            info.push(`Supabase client: ${typeof window.supabaseClient !== 'undefined'}`);
+            info.push(`Auth Manager: ${typeof window.authManager !== 'undefined'}`);
+            info.push(`Current time: ${new Date().toLocaleTimeString()}`);
+            
+            debugDiv.innerHTML = info.map(item => `<p><strong>${item}</strong></p>`).join('');
+        }
+
+        function testSupabase() {
+            console.log('Testing Supabase...');
+            if (window.supabaseClient) {
+                console.log('Supabase client is available');
+                alert('Supabase client is working!');
+            } else {
+                console.error('Supabase client not found');
+                alert('Supabase client not found!');
+            }
+        }
+
+        function testAuth() {
+            console.log('Testing Auth Manager...');
+            if (window.authManager) {
+                console.log('Auth Manager is available');
+                alert('Auth Manager is working!');
+            } else {
+                console.error('Auth Manager not found');
+                alert('Auth Manager not found!');
+            }
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('is-active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('is-active');
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('testEmail').value;
+            const password = document.getElementById('testPassword').value;
+            
+            console.log('Testing login with:', email);
+            
+            if (window.authManager) {
+                try {
+                    await window.authManager.signInWithEmail(email, password);
+                } catch (error) {
+                    console.error('Login test error:', error);
+                    alert('Login test failed: ' + error.message);
+                }
+            } else {
+                alert('Auth Manager not available');
+            }
+        }
+
+        // Update debug info every 2 seconds
+        setInterval(updateDebugInfo, 2000);
+        updateDebugInfo();
+
+        // Close modal on background click
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-background')) {
+                closeLoginModal();
+            }
+        });
+    </script>
+</body>
+</html>

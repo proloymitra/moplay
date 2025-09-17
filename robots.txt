@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Disallow sensitive areas
+Disallow: /wordpress/wp-admin/
+Disallow: /wordpress/wp-includes/
+Disallow: /wordpress/wp-content/plugins/
+Disallow: /wordpress/wp-content/themes/
+Disallow: /.git/
+Disallow: /assets/js/
+Disallow: /assets/css/
+
+# Allow important pages
+Allow: /
+Allow: /leaderboard.html
+Allow: /achievements.html
+Allow: /game-player.html
+Allow: /privacy-policy.html
+Allow: /terms-of-service.html
+
+# Sitemap location
+Sitemap: https://playinmo.com/sitemap.xml

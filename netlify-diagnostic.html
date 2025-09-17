@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify GA Diagnostic</title>
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Netlify Diagnostic - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+        
+        console.log('=== NETLIFY GA DIAGNOSTIC START ===');
+        console.log('1. Page loaded at:', new Date().toISOString());
+        console.log('2. Current URL:', window.location.href);
+        console.log('3. Current hostname:', window.location.hostname);
+        console.log('4. Protocol:', window.location.protocol);
+        console.log('5. User agent:', navigator.userAgent);
+    </script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .error { border-left-color: #dc3545; }
+        .success { border-left-color: #28a745; }
+        .warning { border-left-color: #ffc107; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        #results {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            border-radius: 4px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Netlify Google Analytics Diagnostic</h1>
+    
+    <div class="test-box">
+        <h3>Test Status</h3>
+        <p>This page will automatically test Google Analytics in 3 seconds...</p>
+        <div id="status">⏳ Waiting...</div>
+    </div>
+    
+    <div class="test-box">
+        <h3>Manual Tests</h3>
+        <button onclick="runNetworkTest()">🌐 Test Network Requests</button>
+        <button onclick="runGATest()">📊 Send Test GA Event</button>
+        <button onclick="checkDOMElements()">🔍 Check DOM Elements</button>
+        <button onclick="runFullDiagnostic()">🛠️ Full Diagnostic</button>
+    </div>
+    
+    <div class="test-box">
+        <h3>Results Console</h3>
+        <div id="results"></div>
+    </div>
+    
+    <script>
+        let resultDiv = document.getElementById('results');
+        let statusDiv = document.getElementById('status');
+        
+        function log(message) {
+            console.log(message);
+            resultDiv.textContent += new Date().toLocaleTimeString() + ': ' + message + '\n';
+            resultDiv.scrollTop = resultDiv.scrollHeight;
+        }
+        
+        function setStatus(message, type = 'info') {
+            statusDiv.innerHTML = message;
+            statusDiv.className = type;
+        }
+        
+        // Automatic test after 3 seconds
+        setTimeout(() => {
+            runFullDiagnostic();
+        }, 3000);
+        
+        function runNetworkTest() {
+            log('=== NETWORK TEST ===');
+            
+            // Check if GA script loaded
+            const scripts = document.querySelectorAll('script[src*="googletagmanager"]');
+            log('GA scripts found: ' + scripts.length);
+            
+            scripts.forEach((script, index) => {
+                log(`Script ${index + 1}: ${script.src}`);
+                log(`Script loaded: ${script.readyState || 'unknown'}`);
+            });
+            
+            // Test network request manually
+            fetch('https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N')
+                .then(response => {
+                    log('✅ GA script accessible: ' + response.status);
+                    return response.text();
+                })
+                .then(data => {
+                    log('GA script size: ' + data.length + ' characters');
+                })
+                .catch(error => {
+                    log('❌ GA script error: ' + error.message);
+                });
+        }
+        
+        function runGATest() {
+            log('=== GA FUNCTION TEST ===');
+            log('gtag function type: ' + typeof gtag);
+            log('dataLayer exists: ' + (typeof dataLayer !== 'undefined'));
+            log('dataLayer contents: ' + JSON.stringify(dataLayer, null, 2));
+            
+            if (typeof gtag === 'function') {
+                log('Sending test event...');
+                gtag('event', 'diagnostic_test', {
+                    event_category: 'Netlify_Diagnostic',
+                    event_label: 'Manual_Test',
+                    custom_parameter_1: window.location.hostname,
+                    custom_parameter_2: Date.now()
+                });
+                log('✅ Test event sent');
+                setStatus('✅ GA Test Event Sent - Check Real-time Reports', 'success');
+            } else {
+                log('❌ gtag function not available');
+                setStatus('❌ GA Not Working - gtag function missing', 'error');
+            }
+        }
+        
+        function checkDOMElements() {
+            log('=== DOM ELEMENTS TEST ===');
+            
+            // Check all script tags
+            const allScripts = document.querySelectorAll('script');
+            log('Total scripts on page: ' + allScripts.length);
+            
+            let gaScripts = 0;
+            allScripts.forEach((script, index) => {
+                if (script.src && script.src.includes('googletagmanager')) {
+                    gaScripts++;
+                    log(`GA Script ${gaScripts}: ${script.src}`);
+                    log(`  - Async: ${script.async}`);
+                    log(`  - Defer: ${script.defer}`);
+                    log(`  - ReadyState: ${script.readyState || 'unknown'}`);
+                }
+            });
+            
+            log('Total GA scripts found: ' + gaScripts);
+            
+            // Check for inline GA code
+            const hasInlineGA = document.documentElement.innerHTML.includes('G-8X0LFCXF2N');
+            log('Inline GA code found: ' + hasInlineGA);
+        }
+        
+        function runFullDiagnostic() {
+            log('=== FULL NETLIFY GA DIAGNOSTIC ===');
+            log('Timestamp: ' + new Date().toISOString());
+            log('URL: ' + window.location.href);
+            log('Hostname: ' + window.location.hostname);
+            log('Protocol: ' + window.location.protocol);
+            log('User Agent: ' + navigator.userAgent);
+            
+            // Check environment
+            log('\n=== ENVIRONMENT ===');
+            log('Window.google exists: ' + (typeof window.google !== 'undefined'));
+            log('Document ready state: ' + document.readyState);
+            log('Page fully loaded: ' + (document.readyState === 'complete'));
+            
+            // Run sub-tests
+            checkDOMElements();
+            runNetworkTest();
+            
+            setTimeout(() => {
+                runGATest();
+            }, 1000);
+        }
+        
+        // Monitor for errors
+        window.addEventListener('error', function(e) {
+            log('❌ JavaScript Error: ' + e.message + ' at ' + e.filename + ':' + e.lineno);
+        });
+        
+        // Monitor network errors
+        window.addEventListener('unhandledrejection', function(e) {
+            log('❌ Promise Rejection: ' + e.reason);
+        });
+        
+        log('Diagnostic page loaded successfully');
+    </script>
+</body>
+</html>

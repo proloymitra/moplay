@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - PlayInMo</title>
+    <meta name="description" content="Find answers to common questions about PlayInMo gaming platform. Get help with games, accounts, technical issues, and more.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Help Center - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+        }
+        .icon-container {
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .help-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            height: 100%;
+        }
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #4ecdc4;
+        }
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .article-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #4ecdc4;
+        }
+        .article-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        .quick-help-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            height: 100%;
+        }
+        .trouble-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .trouble-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            transition: background 0.3s ease;
+        }
+        .trouble-question:hover {
+            background: #f8fafc;
+        }
+        .trouble-answer {
+            display: none;
+            padding: 1.5rem;
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+        }
+        .trouble-answer ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        .trouble-answer li {
+            margin-bottom: 0.5rem;
+        }
+        .support-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .floating-help {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .floating-help::before,
+        .floating-help::after {
+            content: '?';
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: float 8s ease-in-out infinite;
+            font-weight: bold;
+        }
+        .floating-help::before {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+        .floating-help::after {
+            top: 60%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        [data-theme="dark"] .article-card,
+        [data-theme="dark"] .trouble-item {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        [data-theme="dark"] .article-card:hover,
+        [data-theme="dark"] .trouble-item:hover {
+            background: #334155;
+        }
+        [data-theme="dark"] .trouble-question {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+        [data-theme="dark"] .trouble-question:hover {
+            background: #334155;
+        }
+        [data-theme="dark"] .trouble-answer {
+            background: #0f172a;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        .pulse-search {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Dark theme navbar styles */
+        [data-theme="dark"] .navbar {
+            background: rgba(26, 26, 26, 0.95) !important;
+            color: #e5e5e5;
+        }
+        
+        [data-theme="dark"] .navbar-item {
+            color: #e5e5e5 !important;
+        }
+        
+        [data-theme="dark"] .navbar-item:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+        }
+        
+        [data-theme="dark"] .navbar-burger span {
+            background-color: #e5e5e5 !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <i class="fas fa-gamepad has-text-white"></i>
+                </div>
+                <span class="title is-4 has-text-weight-bold" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PlayInMo</span>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="about.html">About</a>
+                <a class="navbar-item" href="contact.html">Contact</a>
+                <a class="navbar-item is-active" href="help.html">Help</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <button id="themeToggle" class="button is-rounded">
+                            <i class="fas fa-sun" id="theme-icon"></i>
+                        </button>
+                        <a class="button is-primary is-rounded" href="/">
+                            <strong>Back to Games</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main style="margin-top: 3.25rem;">
+        <!-- Hero Section -->
+        <section class="hero is-medium hero-gradient">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="floating-help"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="icon-container">
+                            <i class="fas fa-question-circle has-text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h1 class="title is-1 has-text-white has-text-weight-bold">Help Center</h1>
+                        <p class="subtitle is-4 has-text-white-ter">Find answers to your questions and get the most out of PlayInMo</p>
+                        
+                        <!-- Search Box -->
+                        <div class="column is-6 is-offset-3 mt-5">
+                            <div class="field has-addons">
+                                <div class="control is-expanded has-icons-left">
+                                    <input class="input is-large pulse-search" type="text" id="helpSearch" placeholder="Search for help articles...">
+                                    <span class="icon is-left">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                                <div class="control">
+                                    <button class="button is-large is-white" id="helpSearchBtn">
+                                        <span class="icon">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" style="padding: 3rem 1rem;">
+            <!-- Help Categories Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Browse by Category</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <div class="card help-card" data-category="getting-started">
+                                <div class="card-content has-text-centered">
+                                    <div class="category-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                        <i class="fas fa-play-circle"></i>
+                                    </div>
+                                    <h3 class="title is-4">Getting Started</h3>
+                                    <p class="mb-4">Learn the basics of PlayInMo</p>
+                                    <span class="tag is-success is-rounded">8 articles</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-4">
+                            <div class="card help-card" data-category="account">
+                                <div class="card-content has-text-centered">
+                                    <div class="category-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <h3 class="title is-4">Account & Profile</h3>
+                                    <p class="mb-4">Manage your account settings</p>
+                                    <span class="tag is-info is-rounded">12 articles</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-4">
+                            <div class="card help-card" data-category="games">
+                                <div class="card-content has-text-centered">
+                                    <div class="category-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <h3 class="title is-4">Games & Gameplay</h3>
+                                    <p class="mb-4">Everything about playing games</p>
+                                    <span class="tag is-primary is-rounded">15 articles</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-4">
+                            <div class="card help-card" data-category="technical">
+                                <div class="card-content has-text-centered">
+                                    <div class="category-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                        <i class="fas fa-cog"></i>
+                                    </div>
+                                    <h3 class="title is-4">Technical Support</h3>
+                                    <p class="mb-4">Troubleshoot technical issues</p>
+                                    <span class="tag is-warning is-rounded">10 articles</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-4">
+                            <div class="card help-card" data-category="achievements">
+                                <div class="card-content has-text-centered">
+                                    <div class="category-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <h3 class="title is-4">Achievements & Rewards</h3>
+                                    <p class="mb-4">Learn about our reward system</p>
+                                    <span class="tag is-danger is-rounded">6 articles</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-4">
+                            <div class="card help-card" data-category="community">
+                                <div class="card-content has-text-centered">
+                                    <div class="category-icon" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <h3 class="title is-4">Community & Safety</h3>
+                                    <p class="mb-4">Stay safe and have fun</p>
+                                    <span class="tag is-link is-rounded">9 articles</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Popular Articles Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Popular Help Articles</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <div class="article-card">
+                                <div class="columns is-mobile is-vcentered">
+                                    <div class="column is-narrow">
+                                        <div class="article-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="title is-5 mb-2">How to create an account</h4>
+                                        <p class="is-size-6 has-text-grey mb-2">Step-by-step guide to joining PlayInMo and setting up your profile.</p>
+                                        <div class="tags">
+                                            <span class="tag is-success is-small">Getting Started</span>
+                                            <span class="tag is-light is-small">2 min read</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="article-card">
+                                <div class="columns is-mobile is-vcentered">
+                                    <div class="column is-narrow">
+                                        <div class="article-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                            <i class="fas fa-gamepad"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="title is-5 mb-2">Games not loading? Here's how to fix it</h4>
+                                        <p class="is-size-6 has-text-grey mb-2">Common solutions for games that won't start or load properly.</p>
+                                        <div class="tags">
+                                            <span class="tag is-warning is-small">Technical</span>
+                                            <span class="tag is-light is-small">3 min read</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="article-card">
+                                <div class="columns is-mobile is-vcentered">
+                                    <div class="column is-narrow">
+                                        <div class="article-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                                            <i class="fas fa-trophy"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="title is-5 mb-2">Understanding the achievement system</h4>
+                                        <p class="is-size-6 has-text-grey mb-2">Learn how to unlock achievements and earn points on PlayInMo.</p>
+                                        <div class="tags">
+                                            <span class="tag is-danger is-small">Achievements</span>
+                                            <span class="tag is-light is-small">4 min read</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="article-card">
+                                <div class="columns is-mobile is-vcentered">
+                                    <div class="column is-narrow">
+                                        <div class="article-icon" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="title is-5 mb-2">Staying safe while gaming online</h4>
+                                        <p class="is-size-6 has-text-grey mb-2">Tips for protecting yourself and having a positive gaming experience.</p>
+                                        <div class="tags">
+                                            <span class="tag is-link is-small">Safety</span>
+                                            <span class="tag is-light is-small">5 min read</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="article-card">
+                                <div class="columns is-mobile is-vcentered">
+                                    <div class="column is-narrow">
+                                        <div class="article-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="title is-5 mb-2">Playing games on mobile devices</h4>
+                                        <p class="is-size-6 has-text-grey mb-2">Tips for the best mobile gaming experience on PlayInMo.</p>
+                                        <div class="tags">
+                                            <span class="tag is-primary is-small">Games</span>
+                                            <span class="tag is-light is-small">3 min read</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="article-card">
+                                <div class="columns is-mobile is-vcentered">
+                                    <div class="column is-narrow">
+                                        <div class="article-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="title is-5 mb-2">How leaderboards work</h4>
+                                        <p class="is-size-6 has-text-grey mb-2">Everything you need to know about rankings and competitions.</p>
+                                        <div class="tags">
+                                            <span class="tag is-info is-small">Games</span>
+                                            <span class="tag is-light is-small">3 min read</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Help Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Quick Help</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <div class="quick-help-card">
+                                <h4 class="title is-4 has-text-white mb-4">System Requirements</h4>
+                                <ul class="has-text-white-bis" style="list-style: none; padding-left: 0;">
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>JavaScript enabled</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Stable internet connection</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Minimum 1GB RAM recommended</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="quick-help-card">
+                                <h4 class="title is-4 has-text-white mb-4">Supported Browsers</h4>
+                                <ul class="has-text-white-bis" style="list-style: none; padding-left: 0;">
+                                    <li class="mb-2"><i class="fab fa-chrome has-text-warning mr-2"></i>Google Chrome (recommended)</li>
+                                    <li class="mb-2"><i class="fab fa-firefox-browser has-text-warning mr-2"></i>Mozilla Firefox</li>
+                                    <li class="mb-2"><i class="fab fa-safari has-text-warning mr-2"></i>Safari (macOS/iOS)</li>
+                                    <li class="mb-2"><i class="fab fa-edge has-text-warning mr-2"></i>Microsoft Edge</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="quick-help-card">
+                                <h4 class="title is-4 has-text-white mb-4">Keyboard Shortcuts</h4>
+                                <ul class="has-text-white-bis" style="list-style: none; padding-left: 0;">
+                                    <li class="mb-2"><kbd class="mr-2">F</kbd>Enter/Exit fullscreen</li>
+                                    <li class="mb-2"><kbd class="mr-2">R</kbd>Refresh current game</li>
+                                    <li class="mb-2"><kbd class="mr-2">ESC</kbd>Exit fullscreen</li>
+                                    <li class="mb-2"><kbd class="mr-2">CTRL+F</kbd>Search games</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="quick-help-card">
+                                <h4 class="title is-4 has-text-white mb-4">Account Features</h4>
+                                <ul class="has-text-white-bis" style="list-style: none; padding-left: 0;">
+                                    <li class="mb-2"><i class="fas fa-save has-text-info mr-2"></i>Save game progress</li>
+                                    <li class="mb-2"><i class="fas fa-trophy has-text-info mr-2"></i>Track achievements</li>
+                                    <li class="mb-2"><i class="fas fa-chart-line has-text-info mr-2"></i>Compete on leaderboards</li>
+                                    <li class="mb-2"><i class="fas fa-comments has-text-info mr-2"></i>Join community chat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Troubleshooting Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Common Issues & Solutions</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-10">
+                            <div class="trouble-item">
+                                <div class="trouble-question">
+                                    <h4 class="title is-5">Game won't load or shows black screen</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="trouble-answer">
+                                    <ul>
+                                        <li>Refresh the page (F5 or Ctrl+R)</li>
+                                        <li>Clear your browser cache and cookies</li>
+                                        <li>Disable browser extensions/add-ons</li>
+                                        <li>Try a different browser</li>
+                                        <li>Check your internet connection</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="trouble-item">
+                                <div class="trouble-question">
+                                    <h4 class="title is-5">Account login issues</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="trouble-answer">
+                                    <ul>
+                                        <li>Double-check your email and password</li>
+                                        <li>Use the "Forgot Password" feature</li>
+                                        <li>Clear browser cache and try again</li>
+                                        <li>Contact support if issues persist</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="trouble-item">
+                                <div class="trouble-question">
+                                    <h4 class="title is-5">Games running slowly or laggy</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="trouble-answer">
+                                    <ul>
+                                        <li>Close other browser tabs and applications</li>
+                                        <li>Check your internet speed</li>
+                                        <li>Try lowering game quality settings</li>
+                                        <li>Restart your browser</li>
+                                        <li>Update your browser to the latest version</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="trouble-item">
+                                <div class="trouble-question">
+                                    <h4 class="title is-5">Audio not working in games</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="trouble-answer">
+                                    <ul>
+                                        <li>Check if browser audio is muted</li>
+                                        <li>Look for audio controls within the game</li>
+                                        <li>Check system volume settings</li>
+                                        <li>Try refreshing the page</li>
+                                        <li>Test audio on another website</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Support Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="support-cta">
+                                <h2 class="title is-3 has-text-white">Still need help?</h2>
+                                <p class="subtitle is-5 has-text-white-ter mb-5">Can't find the answer you're looking for? Our support team is here to help!</p>
+                                <div class="buttons is-centered">
+                                    <a href="contact.html" class="button is-white is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <span>Contact Support</span>
+                                    </a>
+                                    <a href="mailto:support@playinmo.com" class="button is-white is-outlined is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </span>
+                                        <span>Email Us</span>
+                                    </a>
+                                </div>
+                                <p class="has-text-white-bis mt-4">Average response time: 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" style="background: #1e293b; color: white;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="is-flex is-align-items-center mb-4">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-gamepad has-text-white"></i>
+                        </div>
+                        <span class="title is-4 has-text-white has-text-weight-bold">PlayInMo</span>
+                    </div>
+                    <p class="has-text-grey-light">Your destination for free online games</p>
+                </div>
+                <div class="column is-half">
+                    <h4 class="title is-5 has-text-white mb-4">Support</h4>
+                    <ul style="list-style: none;">
+                        <li class="mb-2"><a href="help.html" class="has-text-grey-light">Help Center</a></li>
+                        <li class="mb-2"><a href="contact.html" class="has-text-grey-light">Contact Us</a></li>
+                        <li class="mb-2"><a href="mailto:support@playinmo.com" class="has-text-grey-light">Email Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background: #475569;">
+            <div class="has-text-centered">
+                <p class="has-text-grey-light">&copy; 2024 PlayInMo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function updateTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateTheme();
+        });
+        
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateTheme();
+        
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+        
+        // Help search functionality
+        document.getElementById('helpSearchBtn').addEventListener('click', function() {
+            const query = document.getElementById('helpSearch').value;
+            if (query.trim()) {
+                alert(`Searching for: "${query}"\n\nThis would search our help articles and show relevant results.`);
+            }
+        });
+
+        document.getElementById('helpSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('helpSearchBtn').click();
+            }
+        });
+
+        // Category click handlers
+        document.querySelectorAll('.help-card').forEach(category => {
+            category.addEventListener('click', function() {
+                const categoryName = this.dataset.category || 'selected';
+                alert(`This would show all articles in the "${categoryName}" category.`);
+            });
+        });
+
+        // Article click handlers
+        document.querySelectorAll('.article-card').forEach(article => {
+            article.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                alert(`This would open the full article: "${title}"`);
+            });
+        });
+
+        // Troubleshooting accordion
+        document.querySelectorAll('.trouble-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                const answer = item.querySelector('.trouble-answer');
+                const icon = this.querySelector('i');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Close all other answers
+                    document.querySelectorAll('.trouble-answer').forEach(a => a.style.display = 'none');
+                    document.querySelectorAll('.trouble-question i').forEach(i => i.style.transform = 'rotate(0deg)');
+                    
+                    // Open this answer
+                    answer.style.display = 'block';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Card hover animations
+        document.querySelectorAll('.help-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

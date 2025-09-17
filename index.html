@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayInMo - Free Online Games</title>
+    <meta name="description" content="Play thousands of free online games at PlayInMo. Action, puzzle, racing, strategy games and more!">
+    <meta name="keywords" content="free games, online games, browser games, HTML5 games, flash games">
+    
+    <!-- Performance and SEO meta tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Yandex.RTB -->
+    <script>window.yaContextCb=window.yaContextCb||[]</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
+    
+    <!-- Resource hints for performance -->
+    <link rel="prefetch" href="/game-player.html">
+    <link rel="modulepreload" href="js/contentful-config.js">
+    <link rel="modulepreload" href="js/game-loader.js">
+    <link rel="modulepreload" href="js/auth.js">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+    
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://accounts.google.com">
+    
+    <!-- Preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Web App Manifest for PWA capabilities -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Critical CSS loaded synchronously -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"></noscript>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+    <!-- Google tag (gtag.js) — single loader -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16099717839"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          // Google Ads
+          gtag('config', 'AW-16099717839');
+        
+          // GA4 (same gtag instance — do NOT add another <script src=...> for GA4)
+          gtag('config', 'G-8X0LFCXF2N');
+        </script>
+
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16909717839">
+        </script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'AW-16909717839');
+        </script>
+
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'PlayInMo - Free Online Games',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+        
+        // Deployment verification - remove after testing
+        console.log('🔍 GA DEPLOYMENT CHECK: Analytics loaded on', window.location.hostname, 'at', new Date().toISOString());
+        
+        // Test GA functionality after load
+        setTimeout(() => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'deployment_test', {
+                    event_category: 'Deployment',
+                    event_label: window.location.hostname,
+                    custom_parameter_hostname: window.location.hostname
+                });
+                console.log('✅ GA test event sent from', window.location.hostname);
+            } else {
+                console.error('❌ GA gtag function not available on', window.location.hostname);
+            }
+        }, 3000);
+    </script>
+    
+    <!-- Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <!-- Global callback functions for Google Sign-In -->
+    <script>
+        // Global functions that need to be available when GSI loads
+        function handleGoogleSignIn(response) {
+            console.log('Google Sign-In callback triggered', response);
+            if (window.authManager) {
+                console.log('AuthManager available, processing sign-in');
+                window.authManager.handleGoogleCredentialResponse(response);
+            } else {
+                console.error('AuthManager not loaded yet');
+                // Store the response and retry when auth manager is available
+                window.pendingGoogleResponse = response;
+            }
+        }
+        
+        // Function to test Google Sign-In initialization
+        function testGoogleSignIn() {
+            console.log('=== Google Sign-In Diagnostic ===');
+            console.log('Current URL:', window.location.href);
+            console.log('Protocol:', window.location.protocol);
+            console.log('Google GSI available:', typeof google !== 'undefined' && google.accounts);
+            console.log('handleGoogleSignIn function available:', typeof handleGoogleSignIn === 'function');
+            console.log('AuthManager available:', typeof window.authManager !== 'undefined');
+            
+            // Check if g_id_onload element exists
+            const gIdOnload = document.getElementById('g_id_onload');
+            console.log('g_id_onload element found:', !!gIdOnload);
+            if (gIdOnload) {
+                console.log('Client ID:', gIdOnload.getAttribute('data-client_id'));
+                console.log('Callback:', gIdOnload.getAttribute('data-callback'));
+            }
+            
+            // Check if g_id_signin elements exist
+            const gIdSigninElements = document.querySelectorAll('.g_id_signin');
+            console.log('g_id_signin elements found:', gIdSigninElements.length);
+            
+            // Check for console errors
+            console.log('=== End Diagnostic ===');
+        }
+        
+        function handleGoogleSignUp(response) {
+            if (window.authManager) {
+                window.authManager.handleGoogleCredentialResponse(response);
+            } else {
+                console.error('AuthManager not loaded yet');
+            }
+        }
+        
+        // Regular auth functions
+        function handleRegularLogin() {
+            if (window.authManager) {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                if (!email || !password) {
+                    window.authManager.showError('Please fill in all fields');
+                    return;
+                }
+                
+                window.authManager.signInWithEmail(email, password);
+            } else {
+                console.error('AuthManager not loaded yet');
+            }
+        }
+        
+        function handleRegularSignup() {
+            if (window.authManager) {
+                const username = document.getElementById('signupUsername').value;
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                
+                if (!username || !email || !password) {
+                    window.authManager.showError('Please fill in all fields');
+                    return;
+                }
+                
+                window.authManager.signUpWithEmail(username, email, password);
+            } else {
+                console.error('AuthManager not loaded yet');
+            }
+        }
+        
+        function handleSupabaseGoogleSignIn() {
+            if (window.authManager) {
+                window.authManager.signInWithGoogle();
+            } else {
+                console.error('AuthManager not loaded yet');
+            }
+        }
+        
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('is-active');
+        }
+
+        function closeSignupModal() {
+            document.getElementById('signupModal').classList.remove('is-active');
+        }
+    </script>
+    
+    <style>
+        /* Critical CSS - Above the fold styles */
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #f59e0b;
+            --dark-bg: #1a1a1a;
+            --dark-surface: #2d2d2d;
+            --dark-text: #e5e5e5;
+        }
+        
+        /* Critical layout styles for immediate render */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        /* Navbar critical styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            height: 80px;
+        }
+        
+        /* Main content offset */
+        main {
+            margin-top: 80px;
+        }
+        
+        /* Critical container styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-theme {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .dark-theme .navbar {
+            background-color: var(--dark-surface) !important;
+            border-bottom: 1px solid #404040;
+        }
+        
+        .dark-theme .navbar-item,
+        .dark-theme .navbar-link {
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .navbar-item:hover,
+        .dark-theme .navbar-link:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+        }
+        
+        .dark-theme .button.is-light {
+            background-color: #404040 !important;
+            color: var(--dark-text) !important;
+            border-color: #606060 !important;
+        }
+        
+        .dark-theme .button.is-light:hover {
+            background-color: #505050 !important;
+            color: #ffffff !important;
+        }
+        
+        .dark-theme .card {
+            background-color: var(--dark-surface);
+            color: var(--dark-text);
+        }
+        
+        .dark-theme .box {
+            background-color: var(--dark-surface);
+            color: var(--dark-text);
+        }
+        
+        .dark-theme .section {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .dark-theme .title {
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .subtitle {
+            color: #b0b0b0 !important;
+        }
+        
+        .dark-theme .has-text-grey {
+            color: #b0b0b0 !important;
+        }
+        
+        .dark-theme .footer {
+            background-color: var(--dark-surface);
+            color: var(--dark-text);
+        }
+        
+        .dark-theme .input {
+            background-color: var(--dark-surface) !important;
+            color: var(--dark-text) !important;
+            border-color: #606060 !important;
+        }
+        
+        .dark-theme .input:focus {
+            border-color: var(--primary-color) !important;
+            box-shadow: 0 0 0 0.125em rgba(99, 102, 241, 0.25) !important;
+        }
+        
+        .dark-theme .modal-card {
+            background-color: var(--dark-surface) !important;
+        }
+        
+        .dark-theme .modal-card-head,
+        .dark-theme .modal-card-foot {
+            background-color: var(--dark-surface) !important;
+            border-color: #404040 !important;
+        }
+        
+        .dark-theme .modal-card-title {
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .label {
+            color: var(--dark-text) !important;
+        }
+        
+        /* Additional dark theme fixes */
+        .dark-theme .navbar-burger span {
+            background-color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .navbar-menu {
+            background-color: var(--dark-surface) !important;
+        }
+        
+        .dark-theme .navbar-dropdown {
+            background-color: var(--dark-surface) !important;
+            border-color: #404040 !important;
+        }
+        
+        .dark-theme .navbar-divider {
+            background-color: #404040 !important;
+        }
+        
+        .dark-theme .has-background-light {
+            background-color: var(--dark-surface) !important;
+        }
+        
+        .dark-theme .content h1,
+        .dark-theme .content h2,
+        .dark-theme .content h3,
+        .dark-theme .content h4,
+        .dark-theme .content h5,
+        .dark-theme .content h6 {
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .content p,
+        .dark-theme .content ul,
+        .dark-theme .content ol {
+            color: #b0b0b0 !important;
+        }
+        
+        .dark-theme .table {
+            background-color: var(--dark-surface) !important;
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .table td,
+        .dark-theme .table th {
+            border-color: #404040 !important;
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .game-card .card-content {
+            background-color: var(--dark-surface) !important;
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .game-card .title {
+            color: var(--dark-text) !important;
+        }
+        
+        .dark-theme .game-card .subtitle {
+            color: #b0b0b0 !important;
+        }
+        
+        .dark-theme .notification {
+            background-color: var(--dark-surface) !important;
+            color: var(--dark-text) !important;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .game-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .category-card {
+            transition: all 0.3s ease;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stats-card {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 20px;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .brand-logo {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-icon {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .visual-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visual-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Reduce hero section vertical space */
+        .hero.is-medium .hero-body {
+            padding: 2rem 1.5rem;
+        }
+        
+        /* Mobile optimizations for game visibility */
+        @media (max-width: 768px) {
+            .hero.is-medium .hero-body {
+                padding: 1.5rem 1rem;
+            }
+            
+            .hero .title.is-1 {
+                font-size: 2.2rem !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .hero .subtitle.is-3 {
+                font-size: 1.1rem !important;
+                margin-bottom: 1.5rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            .stats-card {
+                padding: 0.75rem !important;
+                margin: 0.25rem !important;
+            }
+            
+            .stats-card .title.is-3 {
+                font-size: 1.5rem !important;
+            }
+            
+            .stats-card .subtitle.is-7 {
+                font-size: 0.75rem !important;
+            }
+            
+            .stats-card .icon-wrapper {
+                width: 30px !important;
+                height: 30px !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .stats-card .icon-wrapper i {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Truncate game descriptions to 2 lines on tablets */
+            .game-card .content {
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                line-height: 1.3 !important;
+                max-height: 2.6em !important; /* Fallback for non-webkit browsers */
+            }
+            
+            /* Ensure game titles are always visible on tablets */
+            .game-card .title {
+                overflow: visible !important;
+                white-space: normal !important;
+                word-wrap: break-word !important;
+                text-overflow: initial !important;
+            }
+        }
+        
+        /* Mobile portrait - smaller screens */
+        @media (max-width: 480px) {
+            .hero.is-medium .hero-body {
+                padding: 1rem 0.5rem;
+            }
+            
+            .hero .title.is-1 {
+                font-size: 1.8rem !important;
+                margin-bottom: 0.75rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .hero .subtitle.is-3 {
+                font-size: 1rem !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            /* Two column layout for mobile */
+            #games-container .columns.is-multiline {
+                margin: -0.25rem !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+            }
+            
+            #games-container .column {
+                padding: 0.25rem !important;
+                width: 50% !important;
+                max-width: 50% !important;
+                flex: 0 0 50% !important;
+                display: flex !important;
+            }
+            
+            .game-card {
+                border-radius: 8px;
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            
+            .game-card .card-image {
+                height: 90px !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .game-card .card-content {
+                padding: 0.5rem !important;
+                padding-bottom: 2.5rem !important; /* Make room for button */
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                min-height: 120px !important; /* Ensure minimum height for content */
+                justify-content: flex-start !important;
+                position: relative !important;
+            }
+            
+            /* Create a text content area */
+            .game-card .card-content > *:not(.button) {
+                flex-shrink: 0 !important;
+            }
+            
+            .game-card .title {
+                font-size: 0.85rem !important;
+                margin-bottom: 0.25rem !important;
+                line-height: 1.2 !important;
+                height: auto !important;
+                display: block !important;
+                overflow: visible !important; /* Allow title to be fully visible */
+                word-wrap: break-word !important;
+                hyphens: auto !important;
+                white-space: normal !important;
+                text-overflow: initial !important;
+            }
+            
+            .game-card .subtitle,
+            .game-card .content {
+                font-size: 0.65rem !important;
+                margin-bottom: 0.5rem !important;
+                line-height: 1.3 !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+                flex: 1 !important;
+                text-overflow: ellipsis !important;
+                max-height: 1.69em !important; /* 2 lines at 0.65rem font size */
+            }
+            
+            .game-card .button {
+                padding: 0.35rem 0.5rem !important;
+                font-size: 0.7rem !important;
+                width: 100% !important;
+                margin-top: auto !important;
+                position: absolute !important;
+                bottom: 0.5rem !important;
+                left: 0.5rem !important;
+                right: 0.5rem !important;
+                width: calc(100% - 1rem) !important;
+            }
+        }
+        
+        /* Very small screens - single column fallback */
+        @media (max-width: 360px) {
+            #games-container .column {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: 0 0 100% !important;
+            }
+        }
+
+        /* Center Game Categories */
+        #categories-container .columns {
+            justify-content: center !important;
+            align-items: stretch !important;
+        }
+        
+        #categories-container .column {
+            display: flex !important;
+            justify-content: center !important;
+        }
+        
+        #categories-container .category-card {
+            width: 100% !important;
+            max-width: 200px !important;
+        }
+
+        /* SEO Footer Fixes */
+        .seo-footer-text {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            hyphens: none !important;
+            text-align: center !important;
+            max-width: 100% !important;
+        }
+        
+        .seo-footer-text strong {
+            white-space: nowrap !important;
+        }
+
+        /* Mobile category adjustments */
+        @media (max-width: 768px) {
+            #categories-container .columns {
+                justify-content: center !important;
+                align-items: center !important;
+                margin: 0 auto !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            
+            #categories-container .column {
+                padding: 0.5rem !important;
+                flex: 0 0 auto !important;
+                width: 200px !important;
+                max-width: 200px !important;
+                display: flex !important;
+                justify-content: center !important;
+                margin: 0 auto !important;
+            }
+            
+            #categories-container .category-card {
+                width: 100% !important;
+                max-width: 200px !important;
+                min-height: 140px !important;
+                margin: 0 auto !important;
+            }
+            
+            /* Force center alignment for the entire categories section on mobile */
+            #categories-container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+            }
+            
+            /* Override Bulma's default column behavior on mobile */
+            .section #categories-container .columns {
+                margin-left: auto !important;
+                margin-right: auto !important;
+                justify-content: center !important;
+            }
+            
+            /* Ensure Game Categories section centers within its parent */
+            .section:has(#categories-container) {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .section:has(#categories-container) .container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+            }
+            
+            /* Fallback for browsers that don't support :has() */
+            section[style*="background: #f8f9fa"] {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            section[style*="background: #f8f9fa"] .container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+            }
+        }
+
+        /* Desktop category adjustments */
+        @media (min-width: 1024px) {
+            #categories-container .columns {
+                justify-content: center !important;
+            }
+            
+            #categories-container .column {
+                flex: 0 0 auto !important;
+                width: auto !important;
+                max-width: 180px !important;
+                margin: 0 0.5rem !important;
+            }
+            
+            #categories-container .category-card {
+                max-width: 180px !important;
+                min-height: 160px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar is-fixed-top has-shadow" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <span class="icon is-large has-text-primary">
+                        <i class="fas fa-gamepad fa-2x"></i>
+                    </span>
+                    <span class="title is-4 brand-logo ml-2">PlayInMo</span>
+                </a>
+                
+                <a role="button" class="navbar-burger" id="navbarBurger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+
+            <!-- Yandex.RTB R-A-16785547-1 -->
+                <script>
+                window.yaContextCb.push(() => {
+                    Ya.Context.AdvManager.render({
+                        "blockId": "R-A-16785547-1",
+                        "type": "fullscreen",
+                        "platform": "desktop"
+                    })
+                })
+                </script>
+            
+            <div class="navbar-menu" id="navbarMenu">
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <div class="field has-addons">
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Search games..." id="game-search">
+                                <span class="icon is-left">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navbar-end">
+                    <a class="navbar-item has-text-weight-medium" href="leaderboard.html">
+                        <span class="icon"><i class="fas fa-trophy"></i></span>
+                        <span>Leaderboard</span>
+                    </a>
+                    <a class="navbar-item has-text-weight-medium" href="achievements.html">
+                        <span class="icon"><i class="fas fa-medal"></i></span>
+                        <span>Achievements</span>
+                    </a>
+                    <a class="navbar-item has-text-weight-medium" href="/chat.html">
+                        <span class="icon"><i class="fas fa-comments"></i></span>
+                        <span>Chat</span>
+                    </a>
+                    <a class="navbar-item has-text-weight-medium" href="about.html">
+                        <span class="icon"><i class="fas fa-info-circle"></i></span>
+                        <span>About</span>
+                    </a>
+                    
+                    <div class="navbar-item">
+                        <button class="button is-ghost" id="themeToggle">
+                            <span class="icon">
+                                <i class="fas fa-sun" id="themeIcon"></i>
+                            </span>
+                        </button>
+                    </div>
+                    
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <button class="button is-light" id="loginBtn">Login</button>
+                            <button class="button is-primary is-rounded" id="signupBtn">
+                                <strong>Sign Up</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="margin-top: 80px;">
+        <!-- Featured Games -->
+        <section class="section visual-section">
+            <div class="container">
+                <div class="has-text-centered mb-6">
+                    <h2 class="title is-2">
+                        <span class="icon is-large has-text-primary">
+                            <i class="fas fa-star"></i>
+                        </span>
+                        Featured Games
+                    </h2>
+                    <p class="subtitle is-4 has-text-grey">Hand-picked favorites from our collection</p>
+                </div>
+                
+                <div id="games-container">
+                    <!-- Games will be loaded from Contentful -->
+                </div>
+                
+                <div class="has-text-centered mt-6">
+                    <button class="button is-primary is-large is-rounded interactive-element" id="view-all-games-btn">
+                        <span class="icon">
+                            <i class="fas fa-th"></i>
+                        </span>
+                        <span>View All Games</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Section -->
+        <section class="hero is-medium hero-gradient visual-section">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="columns is-vcentered">
+                        <div class="column is-6">
+                            <h1 class="title is-1 has-text-white">
+                                Play <span style="background: linear-gradient(45deg, #ffd700, #ff6b35); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Amazing</span> Games
+                            </h1>
+                            <p class="subtitle is-3 has-text-white-ter mb-6">
+                                Discover thousands of free online games. No downloads, no waiting - just pure gaming fun!
+                            </p>
+                            
+                            <!-- Hero Stats -->
+                            <div class="columns is-mobile is-multiline mb-6">
+                                <div class="column is-12-mobile is-4-tablet has-text-centered">
+                                    <div class="box stats-card floating-card interactive-element" style="margin: 0.5rem; padding: 1rem;">
+                                        <div class="icon-wrapper" style="background: rgba(255, 255, 255, 0.2); width: 40px; height: 40px;">
+                                            <i class="fas fa-gamepad fa-lg pulse-icon"></i>
+                                        </div>
+                                        <p class="title is-3 has-text-white">1000+</p>
+                                        <p class="subtitle is-7 has-text-white-ter">Games</p>
+                                    </div>
+                                </div>
+                                <div class="column is-12-mobile is-4-tablet has-text-centered">
+                                    <div class="box stats-card floating-card interactive-element" style="animation-delay: 1s; margin: 0.5rem; padding: 1rem;">
+                                        <div class="icon-wrapper" style="background: rgba(255, 255, 255, 0.2); width: 40px; height: 40px;">
+                                            <i class="fas fa-users fa-lg pulse-icon"></i>
+                                        </div>
+                                        <p class="title is-3 has-text-white">50K+</p>
+                                        <p class="subtitle is-7 has-text-white-ter">Players</p>
+                                    </div>
+                                </div>
+                                <div class="column is-12-mobile is-4-tablet has-text-centered">
+                                    <div class="box stats-card floating-card interactive-element" style="animation-delay: 2s; margin: 0.5rem; padding: 1rem;">
+                                        <div class="icon-wrapper" style="background: rgba(255, 255, 255, 0.2); width: 40px; height: 40px;">
+                                            <i class="fas fa-clock fa-lg pulse-icon"></i>
+                                        </div>
+                                        <p class="title is-3 has-text-white">24/7</p>
+                                        <p class="subtitle is-7 has-text-white-ter">Online</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <button class="button is-large is-rounded has-text-weight-bold interactive-element" id="start-playing-btn" style="background: linear-gradient(45deg, #ffd700, #ff6b35); border: none; color: #2d2d2d;">
+                                <span class="icon">
+                                    <i class="fas fa-play"></i>
+                                </span>
+                                <span>Start Playing Now</span>
+                            </button>
+                        </div>
+                        
+                        <div class="column is-6">
+                            <div class="has-text-centered">
+                                <figure class="image is-512x512 is-inline-block floating-card">
+                                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                        <i class="fas fa-gamepad" style="font-size: 8rem; color: white; opacity: 0.9;"></i>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Categories -->
+        <section class="section visual-section" style="background: #f8f9fa;">
+            <div class="container">
+                <div class="has-text-centered mb-6">
+                    <h2 class="title is-2">
+                        <span class="icon is-large has-text-info">
+                            <i class="fas fa-th-large"></i>
+                        </span>
+                        Game Categories
+                    </h2>
+                    <p class="subtitle is-4 has-text-grey">Find your favorite type of game</p>
+                </div>
+                
+                <div id="categories-container">
+                    <!-- Categories will be loaded from Contentful -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Recently Added -->
+        <section class="section visual-section">
+            <div class="container">
+                <div class="has-text-centered mb-6">
+                    <h2 class="title is-2">
+                        <span class="icon is-large has-text-success">
+                            <i class="fas fa-clock"></i>
+                        </span>
+                        Recently Added
+                    </h2>
+                    <p class="subtitle is-4 has-text-grey">Fresh games added to our collection</p>
+                </div>
+                
+                <div class="columns is-multiline" id="recentGames">
+                    <!-- Visual placeholder instead of just text -->
+                    <div class="column is-full">
+                        <div class="box has-text-centered" style="background: linear-gradient(45deg, #f8f9fa, #e9ecef); border: 2px dashed #dee2e6;">
+                            <div class="columns is-vcentered">
+                                <div class="column is-3">
+                                    <figure class="image is-128x128 is-inline-block">
+                                        <div style="background: linear-gradient(45deg, #6366f1, #8b5cf6); border-radius: 50%; width: 128px; height: 128px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-gamepad fa-3x has-text-white pulse-icon"></i>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="column">
+                                    <h3 class="title is-3 has-text-grey">New Games Coming Soon!</h3>
+                                    <p class="subtitle has-text-grey-light">We're constantly adding exciting new games to our collection. Check back regularly for the latest additions!</p>
+                                    <div class="tags">
+                                        <span class="tag is-info">Action Games</span>
+                                        <span class="tag is-success">Puzzle Games</span>
+                                        <span class="tag is-warning">Racing Games</span>
+                                        <span class="tag is-danger">Adventure Games</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer has-background-dark">
+        <div class="container">
+            <div class="columns">
+                <!-- Company Info -->
+                <div class="column is-3">
+                    <div class="content">
+                        <div class="level is-mobile mb-4">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <span class="icon is-large has-text-primary">
+                                        <i class="fas fa-gamepad fa-2x"></i>
+                                    </span>
+                                </div>
+                                <div class="level-item">
+                                    <span class="title is-4 brand-logo has-text-white">PlayInMo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="has-text-grey-light">Your ultimate destination for free online games. Play, compete, and have fun with thousands of games.</p>
+                        <div class="buttons mt-4">
+                            <a class="button is-dark is-rounded interactive-element">
+                                <span class="icon"><i class="fab fa-twitter"></i></span>
+                            </a>
+                            <a class="button is-dark is-rounded interactive-element">
+                                <span class="icon"><i class="fab fa-discord"></i></span>
+                            </a>
+                            <a class="button is-dark is-rounded interactive-element">
+                                <span class="icon"><i class="fab fa-youtube"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Popular Game Categories -->
+                <div class="column is-3">
+                    <div class="content">
+                        <h4 class="title is-5 has-text-white">
+                            <span class="icon has-text-primary"><i class="fas fa-gamepad"></i></span>
+                            Popular Games
+                        </h4>
+                        <ul class="has-text-grey-light">
+                            <li><a href="/?category=action" class="has-text-grey-light">Action Games</a></li>
+                            <li><a href="/?category=racing" class="has-text-grey-light">Car Racing Games</a></li>
+                            <li><a href="/?category=puzzle" class="has-text-grey-light">Puzzle Games</a></li>
+                            <li><a href="/?category=shooting" class="has-text-grey-light">Shooting Games</a></li>
+                            <li><a href="/?category=adventure" class="has-text-grey-light">Adventure Games</a></li>
+                            <li><a href="/?category=multiplayer" class="has-text-grey-light">Multiplayer Games</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Game Features -->
+                <div class="column is-3">
+                    <div class="content">
+                        <h4 class="title is-5 has-text-white">
+                            <span class="icon has-text-success"><i class="fas fa-star"></i></span>
+                            Game Features
+                        </h4>
+                        <ul class="has-text-grey-light">
+                            <li><a href="/?type=new" class="has-text-grey-light">New Games</a></li>
+                            <li><a href="/?type=best" class="has-text-grey-light">Best Games</a></li>
+                            <li><a href="/?type=cool" class="has-text-grey-light">Cool Games</a></li>
+                            <li><a href="/?type=fun" class="has-text-grey-light">Fun Games</a></li>
+                            <li><a href="leaderboard.html" class="has-text-grey-light">Leaderboard</a></li>
+                            <li><a href="achievements.html" class="has-text-grey-light">Achievements</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Gaming Info -->
+                <div class="column is-3">
+                    <div class="content">
+                        <h4 class="title is-5 has-text-white">
+                            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+                            Gaming Hub
+                        </h4>
+                        <ul class="has-text-grey-light">
+                            <li><a href="about.html" class="has-text-grey-light">About Gaming</a></li>
+                            <li><a href="help.html" class="has-text-grey-light">Game Help</a></li>
+                            <li><a href="contact.html" class="has-text-grey-light">Contact Support</a></li>
+                            <li><a href="advertise.html" class="has-text-grey-light">Game Publishers</a></li>
+                            <li><a href="privacy-policy.html" class="has-text-grey-light">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html" class="has-text-grey-light">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEO-Optimized Footer Content -->
+            <div class="columns mt-5">
+                <div class="column is-12">
+                    <div class="box has-background-grey-dark" style="padding: 2rem;">
+                        <div class="content has-text-grey-light">
+                            <h5 class="title is-5 has-text-white mb-4 has-text-centered">
+                                <span class="icon has-text-primary"><i class="fas fa-gamepad"></i></span>
+                                Play Free Online Games at PlayInMo
+                            </h5>
+                            <p class="has-text-centered is-size-6 mb-4 seo-footer-text" style="line-height: 1.8;">
+                                Discover thousands of <strong class="has-text-white">free games</strong> including <strong class="has-text-white">action games</strong>, <strong class="has-text-white">racing games</strong>, <strong class="has-text-white">puzzle games</strong>, and <strong class="has-text-white">shooting games</strong>. Our <strong class="has-text-white">online games</strong> platform features <strong class="has-text-white">browser games</strong>, <strong class="has-text-white">HTML5 games</strong>, and <strong class="has-text-white">mobile games</strong> for all devices. Join our <strong class="has-text-white">gaming community</strong> and enjoy the <strong class="has-text-white">best games</strong> collection online - all free to play with no downloads required!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <hr class="has-background-grey">
+            <div class="has-text-centered">
+                <p class="has-text-grey-light">&copy; 2024 PlayInMo. All rights reserved. Made with ❤️ for gamers worldwide.</p>
+                <p class="has-text-grey-light is-size-7 mt-2">
+                    Free Online Games | Browser Games | HTML5 Games | Mobile Gaming | Play Games Online
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat System -->
+    <div class="chat-widget" id="chatWidget" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <div class="card">
+            <div class="card-content" style="padding: 1rem;">
+                <button class="button is-primary is-rounded is-large" id="chatToggle">
+                    <span class="icon">
+                        <i class="fas fa-comments"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="loginModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">
+                    <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
+                    Login
+                </p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <!-- Google Sign-In Button -->
+                <div class="field">
+                    <div class="control">
+                        <div id="g_id_onload"
+                             data-client_id="820870277018-utg0of3ia3jue81e126egmjcg90jlhal.apps.googleusercontent.com"
+                             data-context="signin"
+                             data-ux_mode="popup"
+                             data-callback="handleGoogleSignIn"
+                             data-auto_prompt="false">
+                        </div>
+                        <button type="button" class="button is-primary is-fullwidth" onclick="handleSupabaseGoogleSignIn()">
+                            <span class="icon">
+                                <i class="fab fa-google"></i>
+                            </span>
+                            <span>Sign in with Google</span>
+                        </button>
+                        
+                        <!-- Debug: Manual test button -->
+                        <button type="button" class="button is-small is-light mt-2" onclick="testGoogleSignIn()">
+                            🔧 Test Google Sign-In Setup
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="has-text-centered my-4">
+                    <span class="has-text-grey">or</span>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="email" required id="loginEmail">
+                            <span class="icon is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" required id="loginPassword">
+                            <span class="icon is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary" type="submit" onclick="handleRegularLogin()">Login</button>
+                <button class="button" onclick="closeLoginModal()">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <div class="modal" id="signupModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">
+                    <span class="icon"><i class="fas fa-user-plus"></i></span>
+                    Sign Up
+                </p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <!-- Google Sign-In Button for Signup -->
+                <div class="field">
+                    <div class="control">
+                        <button type="button" class="button is-primary is-fullwidth" onclick="handleSupabaseGoogleSignIn()">
+                            <span class="icon">
+                                <i class="fab fa-google"></i>
+                            </span>
+                            <span>Sign up with Google</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="has-text-centered my-4">
+                    <span class="has-text-grey">or</span>
+                </div>
+                
+                <form id="signupForm">
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" required id="signupUsername">
+                            <span class="icon is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="email" required id="signupEmail">
+                            <span class="icon is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" required id="signupPassword">
+                            <span class="icon is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary" type="submit" onclick="handleRegularSignup()">Sign Up</button>
+                <button class="button" onclick="closeSignupModal()">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Load Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Load application scripts in order -->
+    <script src="js/supabase-config.js"></script>
+    <script src="js/contentful-config.js"></script>
+    <script src="js/game-loader.js"></script>
+    <script src="js/auth.js"></script>
+    <!-- Chat.js only loaded on chat page now -->
+
+    <script>
+        // Button test function for debugging
+        function testButtons() {
+            console.log('=== Button Test ===');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            
+            console.log('loginBtn:', !!loginBtn);
+            console.log('signupBtn:', !!signupBtn);
+            console.log('loginModal:', !!loginModal);
+            console.log('signupModal:', !!signupModal);
+            
+            // Don't override the buttons - just report their status
+            console.log('AuthManager available:', !!window.authManager);
+            console.log('Current user:', window.authManager?.currentUser?.username || 'Not logged in');
+        }
+
+        // Navbar functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById('navbarMenu');
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+            
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-theme');
+                    const isDark = document.body.classList.contains('dark-theme');
+                    localStorage.setItem('darkMode', isDark);
+                    
+                    // Track theme toggle event
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'theme_toggle', {
+                            event_category: 'User Interface',
+                            event_label: isDark ? 'Dark Mode' : 'Light Mode',
+                            theme: isDark ? 'dark' : 'light'
+                        });
+                    }
+                    
+                    if (isDark) {
+                        themeIcon.className = 'fas fa-moon';
+                    } else {
+                        themeIcon.className = 'fas fa-sun';
+                    }
+                });
+            }
+            
+            // Initialize theme
+            if (localStorage.getItem('darkMode') === 'true' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.body.classList.add('dark-theme');
+                if (themeIcon) themeIcon.className = 'fas fa-moon';
+            }
+            
+            // Modal functionality
+            const modals = document.querySelectorAll('.modal');
+            const modalButtons = document.querySelectorAll('[data-target]');
+            const modalCloses = document.querySelectorAll('.modal-background, .modal-close, .delete');
+            
+            modalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = button.dataset.target;
+                    const modal = document.getElementById(target);
+                    modal.classList.add('is-active');
+                });
+            });
+            
+            modalCloses.forEach(close => {
+                close.addEventListener('click', () => {
+                    modals.forEach(modal => {
+                        modal.classList.remove('is-active');
+                    });
+                });
+            });
+            
+            // Auth buttons - handled by AuthManager
+            // The event listeners are now managed by the AuthManager class
+            
+            // Test Google Sign-In setup after a short delay
+            setTimeout(() => {
+                testGoogleSignIn();
+            }, 2000);
+            
+            // Service Worker Registration for performance optimization
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then(function(registration) {
+                            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                            
+                            // Track service worker installation
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'service_worker_installed', {
+                                    event_category: 'Performance',
+                                    event_label: 'Service Worker Registration'
+                                });
+                            }
+                        })
+                        .catch(function(err) {
+                            console.log('ServiceWorker registration failed: ', err);
+                        });
+                });
+            }
+            
+            // Debug info after everything loads
+            setTimeout(() => {
+                console.log('=== System Status ===');
+                console.log('AuthManager available:', !!window.authManager);
+                console.log('ChatManager available:', !!window.chatManager);
+                console.log('Current user:', window.authManager?.currentUser?.username || 'Not logged in');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

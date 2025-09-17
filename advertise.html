@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertise With Us - PlayInMo</title>
+    <meta name="description" content="Reach gaming enthusiasts through PlayInMo advertising opportunities. Partner with us to connect with engaged gamers worldwide.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16909717839"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'AW-16909717839');
+        </script>
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Advertise With Us - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+        .icon-container {
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .ad-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            height: 100%;
+        }
+        .ad-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #6366f1;
+        }
+        .format-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .stats-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .benefit-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #6366f1;
+        }
+        .package-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+        }
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .package-card.featured {
+            border: 2px solid #6366f1;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .package-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .package-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #6366f1;
+            margin-bottom: 1rem;
+        }
+        .contact-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .floating-icons::before,
+        .floating-icons::after {
+            content: '📢';
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 10s ease-in-out infinite;
+        }
+        .floating-icons::before {
+            top: 25%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .floating-icons::after {
+            top: 65%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        .demo-chart {
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .demo-bar {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .success-story {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .success-story:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="dark"] .stats-card,
+        [data-theme="dark"] .package-card,
+        [data-theme="dark"] .benefit-card {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        [data-theme="dark"] .stats-card:hover,
+        [data-theme="dark"] .package-card:hover,
+        [data-theme="dark"] .benefit-card:hover {
+            background: #334155;
+        }
+        [data-theme="dark"] .demo-chart {
+            background: #1e293b;
+        }
+        [data-theme="dark"] .success-story {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .pulse-effect {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <i class="fas fa-gamepad has-text-white"></i>
+                </div>
+                <span class="title is-4 has-text-weight-bold" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PlayInMo</span>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="about.html">About</a>
+                <a class="navbar-item" href="contact.html">Contact</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <button id="themeToggle" class="button is-rounded">
+                            <i class="fas fa-sun" id="theme-icon"></i>
+                        </button>
+                        <a class="button is-primary is-rounded" href="/">
+                            <strong>Back to Games</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main style="margin-top: 3.25rem;">
+        <!-- Hero Section -->
+        <section class="hero is-medium hero-gradient">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="floating-icons"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="icon-container">
+                            <i class="fas fa-bullhorn has-text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h1 class="title is-1 has-text-white has-text-weight-bold">Advertise With PlayInMo</h1>
+                        <p class="subtitle is-4 has-text-white-ter">Connect with engaged gaming enthusiasts worldwide</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" style="padding: 3rem 1rem;">
+            <!-- Statistics Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Reach Your Target Audience</h2>
+                    <p class="subtitle is-5 has-text-centered mb-6 has-text-grey">PlayInMo attracts millions of gaming enthusiasts who are actively engaged with our platform. Partner with us to reach a highly targeted audience.</p>
+                    
+                    <div class="columns is-multiline">
+                        <div class="column is-3">
+                            <div class="stats-card">
+                                <div class="stats-number">50K+</div>
+                                <h4 class="title is-6 has-text-grey">Monthly Active Users</h4>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="stats-card">
+                                <div class="stats-number">2M+</div>
+                                <h4 class="title is-6 has-text-grey">Monthly Page Views</h4>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="stats-card">
+                                <div class="stats-number">15min</div>
+                                <h4 class="title is-6 has-text-grey">Average Session Time</h4>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="stats-card">
+                                <div class="stats-number">65%</div>
+                                <h4 class="title is-6 has-text-grey">Return Visitors</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Formats Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Advertising Formats</h2>
+                    <p class="subtitle is-5 has-text-centered mb-6 has-text-grey">Choose from our premium advertising solutions</p>
+                    
+                    <div class="columns is-multiline">
+                        <div class="column is-half">
+                            <div class="card ad-card">
+                                <div class="card-content">
+                                    <div class="format-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                                        <i class="fas fa-play-circle"></i>
+                                    </div>
+                                    <h3 class="title is-4">Pre-Roll Video Ads</h3>
+                                    <p class="mb-4">High-impact video advertisements shown before game sessions with excellent viewer engagement rates.</p>
+                                    <div class="content">
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>15-30 second video spots</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Full-screen presentation</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Skip option after 5 seconds</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>High completion rates</li>
+                                        </ul>
+                                    </div>
+                                    <div class="has-text-primary is-size-4 has-text-weight-bold">Starting at $2.50 CPM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-half">
+                            <div class="card ad-card">
+                                <div class="card-content">
+                                    <div class="format-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                        <i class="fas fa-stop-circle"></i>
+                                    </div>
+                                    <h3 class="title is-4">Post-Roll Video Ads</h3>
+                                    <p class="mb-4">Targeted advertisements displayed after game completion when users are most engaged.</p>
+                                    <div class="content">
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>15-30 second video spots</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>High engagement timing</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Call-to-action integration</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Premium positioning</li>
+                                        </ul>
+                                    </div>
+                                    <div class="has-text-primary is-size-4 has-text-weight-bold">Starting at $3.00 CPM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-half">
+                            <div class="card ad-card">
+                                <div class="card-content">
+                                    <div class="format-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                        <i class="fas fa-rectangle-ad"></i>
+                                    </div>
+                                    <h3 class="title is-4">Banner Advertisements</h3>
+                                    <p class="mb-4">Strategic banner placements throughout the platform for consistent brand visibility.</p>
+                                    <div class="content">
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Multiple sizes available</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Homepage prominence</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Game category targeting</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Responsive design</li>
+                                        </ul>
+                                    </div>
+                                    <div class="has-text-primary is-size-4 has-text-weight-bold">Starting at $1.50 CPM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-half">
+                            <div class="card ad-card">
+                                <div class="card-content">
+                                    <div class="format-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <h3 class="title is-4">Sponsored Games</h3>
+                                    <p class="mb-4">Feature your brand through sponsored game content and custom gaming experiences.</p>
+                                    <div class="content">
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Brand integration opportunities</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Custom game development</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Featured placement</li>
+                                            <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Extended engagement</li>
+                                        </ul>
+                                    </div>
+                                    <div class="has-text-primary is-size-4 has-text-weight-bold">Custom pricing</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audience Demographics -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Audience Demographics</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <div class="card ad-card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Age Distribution</h4>
+                                    <div class="demo-chart">
+                                        <div class="demo-bar" style="width: 20%;">13-17: 20%</div>
+                                        <div class="demo-bar" style="width: 35%;">18-24: 35%</div>
+                                        <div class="demo-bar" style="width: 30%;">25-34: 30%</div>
+                                        <div class="demo-bar" style="width: 15%;">35+: 15%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="card ad-card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Geographic Distribution</h4>
+                                    <ul style="list-style: none;">
+                                        <li class="mb-2"><i class="fas fa-globe-americas has-text-info mr-2"></i>North America: 45%</li>
+                                        <li class="mb-2"><i class="fas fa-globe-europe has-text-success mr-2"></i>Europe: 30%</li>
+                                        <li class="mb-2"><i class="fas fa-globe-asia has-text-warning mr-2"></i>Asia: 15%</li>
+                                        <li class="mb-2"><i class="fas fa-globe has-text-danger mr-2"></i>Other: 10%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="card ad-card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Device Usage</h4>
+                                    <ul style="list-style: none;">
+                                        <li class="mb-2"><i class="fas fa-desktop has-text-primary mr-2"></i>Desktop: 60%</li>
+                                        <li class="mb-2"><i class="fas fa-mobile-alt has-text-success mr-2"></i>Mobile: 35%</li>
+                                        <li class="mb-2"><i class="fas fa-tablet-alt has-text-info mr-2"></i>Tablet: 5%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="card ad-card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Gaming Preferences</h4>
+                                    <ul style="list-style: none;">
+                                        <li class="mb-2"><i class="fas fa-fist-raised has-text-danger mr-2"></i>Action Games: 28%</li>
+                                        <li class="mb-2"><i class="fas fa-puzzle-piece has-text-success mr-2"></i>Puzzle Games: 22%</li>
+                                        <li class="mb-2"><i class="fas fa-chess has-text-warning mr-2"></i>Strategy Games: 18%</li>
+                                        <li class="mb-2"><i class="fas fa-car has-text-info mr-2"></i>Racing Games: 15%</li>
+                                        <li class="mb-2"><i class="fas fa-football-ball has-text-primary mr-2"></i>Sports Games: 17%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benefits Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Why Advertise on PlayInMo?</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <div class="benefit-card">
+                                <div class="format-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                    <i class="fas fa-target"></i>
+                                </div>
+                                <h4 class="title is-5">Highly Engaged Audience</h4>
+                                <p>Our users spend significant time on the platform with high engagement rates and return visits.</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="benefit-card">
+                                <div class="format-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 class="title is-5">Measurable Results</h4>
+                                <p>Comprehensive analytics and reporting to track your campaign performance and ROI.</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="benefit-card">
+                                <div class="format-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <h4 class="title is-5">Precise Targeting</h4>
+                                <p>Advanced targeting options to ensure your ads reach the most relevant audience.</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="benefit-card">
+                                <div class="format-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4 class="title is-5">Brand Safe Environment</h4>
+                                <p>Family-friendly platform with moderated content ensuring a safe environment for your brand.</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="benefit-card">
+                                <div class="format-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h4 class="title is-5">Cross-Platform Reach</h4>
+                                <p>Reach users across all devices with responsive ad formats that work everywhere.</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="benefit-card">
+                                <div class="format-icon" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <h4 class="title is-5">Dedicated Support</h4>
+                                <p>Work with our experienced team to optimize your campaigns and achieve your goals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Success Stories -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Success Stories</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <div class="success-story">
+                                <h4 class="title is-5 has-text-info">Gaming Hardware Brand</h4>
+                                <p class="mb-2"><strong>Challenge:</strong> Increase brand awareness among young gamers</p>
+                                <p class="mb-2"><strong>Solution:</strong> Pre-roll video ads targeted at action game players</p>
+                                <p><strong>Results:</strong> 45% increase in brand recall, 25% boost in website traffic</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="success-story">
+                                <h4 class="title is-5 has-text-success">Mobile Game Developer</h4>
+                                <p class="mb-2"><strong>Challenge:</strong> Drive app downloads for new puzzle game</p>
+                                <p class="mb-2"><strong>Solution:</strong> Post-roll ads targeting puzzle game enthusiasts</p>
+                                <p><strong>Results:</strong> 300% increase in app downloads, 15% conversion rate</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="success-story">
+                                <h4 class="title is-5 has-text-warning">Streaming Service</h4>
+                                <p class="mb-2"><strong>Challenge:</strong> Promote gaming content to relevant audience</p>
+                                <p class="mb-2"><strong>Solution:</strong> Banner ads and sponsored content integration</p>
+                                <p><strong>Results:</strong> 60% increase in subscriptions from gaming demographic</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Packages -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Advertising Packages</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <div class="package-card">
+                                <h3 class="title is-4">Starter Package</h3>
+                                <div class="package-price">$500/month</div>
+                                <ul style="list-style: none;">
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Banner ads on homepage</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Basic demographic targeting</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Monthly performance reports</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Email support</li>
+                                </ul>
+                                <button class="button is-primary is-fullwidth mt-4 pulse-effect" onclick="contactSales('Starter Package')">Get Started</button>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="package-card featured">
+                                <h3 class="title is-4">Professional Package</h3>
+                                <div class="package-price">$2,000/month</div>
+                                <ul style="list-style: none;">
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Pre-roll and banner ads</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Advanced targeting options</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Weekly performance reports</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Dedicated account manager</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>A/B testing support</li>
+                                </ul>
+                                <button class="button is-primary is-fullwidth mt-4 pulse-effect" onclick="contactSales('Professional Package')">Most Popular</button>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="package-card">
+                                <h3 class="title is-4">Enterprise Package</h3>
+                                <div class="package-price">Custom Pricing</div>
+                                <ul style="list-style: none;">
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>All ad formats available</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Custom targeting solutions</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Real-time reporting dashboard</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Priority support</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Sponsored content opportunities</li>
+                                </ul>
+                                <button class="button is-primary is-fullwidth mt-4 pulse-effect" onclick="contactSales('Enterprise Package')">Contact Us</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact CTA -->
+            <section class="section">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="contact-cta">
+                                <h2 class="title is-3 has-text-white">Ready to Start Advertising?</h2>
+                                <p class="subtitle is-5 has-text-white-ter mb-5">Join leading brands who trust PlayInMo to reach engaged gaming audiences. Contact our advertising team to discuss your campaign goals.</p>
+                                <div class="buttons is-centered">
+                                    <a href="contact.html" class="button is-white is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <span>Contact Advertising Team</span>
+                                    </a>
+                                    <a href="mailto:advertising@playinmo.com" class="button is-white is-outlined is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </span>
+                                        <span>Email: advertising@playinmo.com</span>
+                                    </a>
+                                </div>
+                                <p class="has-text-white-bis mt-4">Phone: +1 (555) PLAY-INMO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" style="background: #1e293b; color: white;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="is-flex is-align-items-center mb-4">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-gamepad has-text-white"></i>
+                        </div>
+                        <span class="title is-4 has-text-white has-text-weight-bold">PlayInMo</span>
+                    </div>
+                    <p class="has-text-grey-light">Your destination for free online games</p>
+                </div>
+                <div class="column is-half">
+                    <h4 class="title is-5 has-text-white mb-4">Business</h4>
+                    <ul style="list-style: none;">
+                        <li class="mb-2"><a href="advertise.html" class="has-text-grey-light">Advertise With Us</a></li>
+                        <li class="mb-2"><a href="contact.html" class="has-text-grey-light">Contact</a></li>
+                        <li class="mb-2"><a href="about.html" class="has-text-grey-light">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background: #475569;">
+            <div class="has-text-centered">
+                <p class="has-text-grey-light">&copy; 2024 PlayInMo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function updateTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateTheme();
+        });
+        
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateTheme();
+        
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+        
+        // Card hover animations
+        document.querySelectorAll('.ad-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Contact sales function
+        function contactSales(packageName) {
+            alert(`Thank you for your interest in the ${packageName}! Please contact our sales team at advertising@playinmo.com or use our contact form to discuss your advertising needs.`);
+        }
+    </script>
+</body>
+</html>

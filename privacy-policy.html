@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - PlayInMo</title>
+    <meta name="description" content="PlayInMo Privacy Policy - Learn how we collect, use, and protect your personal information">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Privacy Policy - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .icon-container {
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .privacy-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            height: 100%;
+        }
+        .privacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #667eea;
+        }
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .data-type-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .data-type-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+        .rights-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .rights-card:hover {
+            transform: scale(1.05);
+        }
+        .contact-privacy {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .floating-shield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .floating-shield::before,
+        .floating-shield::after {
+            content: '🔒';
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+        .floating-shield::before {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+        .floating-shield::after {
+            top: 60%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .security-feature {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .security-feature:hover {
+            background: #f8fafc;
+            transform: translateX(5px);
+        }
+        .security-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+        }
+        [data-theme="dark"] .data-type-card,
+        [data-theme="dark"] .security-feature {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        [data-theme="dark"] .data-type-card:hover,
+        [data-theme="dark"] .security-feature:hover {
+            background: #334155;
+        }
+        .pulse-icon {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .step-number {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <i class="fas fa-gamepad has-text-white"></i>
+                </div>
+                <span class="title is-4 has-text-weight-bold" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PlayInMo</span>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="about.html">About</a>
+                <a class="navbar-item" href="contact.html">Contact</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <button id="themeToggle" class="button is-rounded">
+                            <i class="fas fa-sun" id="theme-icon"></i>
+                        </button>
+                        <a class="button is-primary is-rounded" href="/">
+                            <strong>Back to Games</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main style="margin-top: 3.25rem;">
+        <!-- Hero Section -->
+        <section class="hero is-medium hero-gradient">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="floating-shield"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="icon-container">
+                            <i class="fas fa-shield-alt has-text-white pulse-icon" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h1 class="title is-1 has-text-white has-text-weight-bold">Privacy Policy</h1>
+                        <p class="subtitle is-4 has-text-white-ter">Your privacy and data security are our top priorities</p>
+                        <p class="has-text-white-bis">Last updated: December 19, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" style="padding: 3rem 1rem;">
+            <!-- Introduction Section -->
+            <section class="section">
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="card privacy-card">
+                            <div class="card-content has-text-centered">
+                                <h2 class="title is-3 has-text-primary mb-4">Our Commitment to Your Privacy</h2>
+                                <p class="is-size-5">At PlayInMo, we respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you use our gaming platform.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Collection Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Information We Collect</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <div class="data-type-card">
+                                <div class="section-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h3 class="title is-4 has-text-centered has-text-success">Personal Information</h3>
+                                <ul class="content">
+                                    <li>Username and email address</li>
+                                    <li>Profile information you provide</li>
+                                    <li>Account preferences and settings</li>
+                                    <li>Communication preferences</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="data-type-card">
+                                <div class="section-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                                <h3 class="title is-4 has-text-centered has-text-info">Game Data</h3>
+                                <ul class="content">
+                                    <li>Game scores and achievements</li>
+                                    <li>Game progress and statistics</li>
+                                    <li>Time spent playing games</li>
+                                    <li>Game preferences and history</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="data-type-card">
+                                <div class="section-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="title is-4 has-text-centered has-text-primary">Usage Information</h3>
+                                <ul class="content">
+                                    <li>Pages visited and features used</li>
+                                    <li>Time spent on the platform</li>
+                                    <li>Click patterns and interactions</li>
+                                    <li>Search queries and filters</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="data-type-card">
+                                <div class="section-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <h3 class="title is-4 has-text-centered has-text-warning">Device Information</h3>
+                                <ul class="content">
+                                    <li>IP address and location data</li>
+                                    <li>Browser type and version</li>
+                                    <li>Operating system information</li>
+                                    <li>Device specifications</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How We Use Data Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">How We Use Your Information</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-10">
+                            <div class="columns is-multiline">
+                                <div class="column is-4">
+                                    <div class="security-feature">
+                                        <div class="is-flex is-align-items-center">
+                                            <div class="security-icon">
+                                                <i class="fas fa-cogs"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="title is-6 mb-1">Platform Operation</h4>
+                                                <p class="is-size-7">Provide and maintain our gaming services</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-4">
+                                    <div class="security-feature">
+                                        <div class="is-flex is-align-items-center">
+                                            <div class="security-icon">
+                                                <i class="fas fa-user-cog"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="title is-6 mb-1">Personalization</h4>
+                                                <p class="is-size-7">Customize your gaming experience</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-4">
+                                    <div class="security-feature">
+                                        <div class="is-flex is-align-items-center">
+                                            <div class="security-icon">
+                                                <i class="fas fa-trophy"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="title is-6 mb-1">Progress Tracking</h4>
+                                                <p class="is-size-7">Save achievements and game progress</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-4">
+                                    <div class="security-feature">
+                                        <div class="is-flex is-align-items-center">
+                                            <div class="security-icon">
+                                                <i class="fas fa-comments"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="title is-6 mb-1">Communication</h4>
+                                                <p class="is-size-7">Send updates and respond to support</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-4">
+                                    <div class="security-feature">
+                                        <div class="is-flex is-align-items-center">
+                                            <div class="security-icon">
+                                                <i class="fas fa-chart-bar"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="title is-6 mb-1">Analytics</h4>
+                                                <p class="is-size-7">Improve our platform and services</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-4">
+                                    <div class="security-feature">
+                                        <div class="is-flex is-align-items-center">
+                                            <div class="security-icon">
+                                                <i class="fas fa-gavel"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="title is-6 mb-1">Legal Compliance</h4>
+                                                <p class="is-size-7">Meet legal and regulatory requirements</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Sharing Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Information Sharing</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="card privacy-card">
+                                <div class="card-content">
+                                    <div class="has-text-centered mb-4">
+                                        <i class="fas fa-handshake fa-3x has-text-primary"></i>
+                                    </div>
+                                    <h3 class="title is-4 has-text-centered">We Do Not Sell Your Data</h3>
+                                    <p class="content has-text-centered">We do not sell, trade, or rent your personal information to third parties. We may share your information only in these specific circumstances:</p>
+                                    <div class="columns is-multiline">
+                                        <div class="column is-6">
+                                            <div class="is-flex is-align-items-center mb-3">
+                                                <div class="step-number">1</div>
+                                                <span>With your explicit consent</span>
+                                            </div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="is-flex is-align-items-center mb-3">
+                                                <div class="step-number">2</div>
+                                                <span>To comply with legal requirements</span>
+                                            </div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="is-flex is-align-items-center mb-3">
+                                                <div class="step-number">3</div>
+                                                <span>To protect our rights and safety</span>
+                                            </div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="is-flex is-align-items-center mb-3">
+                                                <div class="step-number">4</div>
+                                                <span>With trusted service providers</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Security Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Data Security</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-10">
+                            <div class="card privacy-card">
+                                <div class="card-content">
+                                    <div class="has-text-centered mb-5">
+                                        <i class="fas fa-shield-alt fa-3x has-text-success"></i>
+                                    </div>
+                                    <h3 class="title is-4 has-text-centered">Security Measures</h3>
+                                    <p class="content has-text-centered mb-5">We implement comprehensive security measures to protect your data against unauthorized access, alteration, disclosure, or destruction.</p>
+                                    <div class="columns is-multiline">
+                                        <div class="column is-4">
+                                            <div class="has-text-centered">
+                                                <div class="section-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                                                    <i class="fas fa-lock"></i>
+                                                </div>
+                                                <h4 class="title is-6">Encryption</h4>
+                                                <p class="is-size-7">Data encrypted in transit and at rest</p>
+                                            </div>
+                                        </div>
+                                        <div class="column is-4">
+                                            <div class="has-text-centered">
+                                                <div class="section-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                                    <i class="fas fa-server"></i>
+                                                </div>
+                                                <h4 class="title is-6">Secure Servers</h4>
+                                                <p class="is-size-7">Protected infrastructure and monitoring</p>
+                                            </div>
+                                        </div>
+                                        <div class="column is-4">
+                                            <div class="has-text-centered">
+                                                <div class="section-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                                    <i class="fas fa-user-shield"></i>
+                                                </div>
+                                                <h4 class="title is-6">Access Control</h4>
+                                                <p class="is-size-7">Limited access on need-to-know basis</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Your Rights Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Your Privacy Rights</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-3">
+                            <div class="rights-card">
+                                <i class="fas fa-eye fa-2x mb-3"></i>
+                                <h4 class="title is-5 has-text-white">Access</h4>
+                                <p class="has-text-white-bis">View your personal data</p>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="rights-card" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                <i class="fas fa-edit fa-2x mb-3"></i>
+                                <h4 class="title is-5 has-text-white">Update</h4>
+                                <p class="has-text-white-bis">Correct inaccurate information</p>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="rights-card" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                                <i class="fas fa-trash fa-2x mb-3"></i>
+                                <h4 class="title is-5 has-text-white">Delete</h4>
+                                <p class="has-text-white-bis">Request data deletion</p>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="rights-card" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                <i class="fas fa-download fa-2x mb-3"></i>
+                                <h4 class="title is-5 has-text-white">Export</h4>
+                                <p class="has-text-white-bis">Download your data</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="contact-privacy">
+                                <h2 class="title is-3 has-text-white">Questions About Your Privacy?</h2>
+                                <p class="subtitle is-5 has-text-white-ter mb-5">We're here to help you understand our privacy practices and exercise your rights</p>
+                                <div class="buttons is-centered">
+                                    <a href="contact.html" class="button is-white is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <span>Contact Us</span>
+                                    </a>
+                                    <a href="mailto:privacy@playinmo.com" class="button is-white is-outlined is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </span>
+                                        <span>Privacy Team</span>
+                                    </a>
+                                </div>
+                                <p class="has-text-white-bis mt-4">We respond to privacy inquiries within 30 days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" style="background: #1e293b; color: white;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="is-flex is-align-items-center mb-4">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-gamepad has-text-white"></i>
+                        </div>
+                        <span class="title is-4 has-text-white has-text-weight-bold">PlayInMo</span>
+                    </div>
+                    <p class="has-text-grey-light">Your destination for free online games</p>
+                </div>
+                <div class="column is-half">
+                    <h4 class="title is-5 has-text-white mb-4">Legal</h4>
+                    <ul style="list-style: none;">
+                        <li class="mb-2"><a href="privacy-policy.html" class="has-text-grey-light">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="terms-of-service.html" class="has-text-grey-light">Terms of Service</a></li>
+                        <li class="mb-2"><a href="cookie-policy.html" class="has-text-grey-light">Cookie Policy</a></li>
+                        <li class="mb-2"><a href="responsible-gaming.html" class="has-text-grey-light">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background: #475569;">
+            <div class="has-text-centered">
+                <p class="has-text-grey-light">&copy; 2024 PlayInMo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function updateTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateTheme();
+        });
+        
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateTheme();
+        
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+
+        // Card hover animations
+        document.querySelectorAll('.privacy-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

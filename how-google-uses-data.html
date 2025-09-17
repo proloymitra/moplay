@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Google Uses Data - PlayInMo</title>
+    <meta name="description" content="Learn how Google uses data when you visit sites that use Google services, including advertising and analytics.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #f59e0b;
+            --dark-bg: #1a1a1a;
+            --dark-surface: #2d2d2d;
+            --dark-text: #e5e5e5;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-theme {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .dark-theme .navbar {
+            background-color: var(--dark-surface) !important;
+            border-bottom: 1px solid #404040;
+        }
+        
+        .dark-theme .card {
+            background-color: var(--dark-surface);
+            color: var(--dark-text);
+        }
+        
+        .dark-theme .box {
+            background-color: var(--dark-surface);
+            color: var(--dark-text);
+        }
+        
+        .dark-theme .footer {
+            background-color: var(--dark-surface);
+            color: var(--dark-text);
+        }
+        
+        .brand-logo {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-icon {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        .visual-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visual-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .countdown-circle {
+            animation: countdown 5s linear;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+        }
+        
+        @keyframes countdown {
+            from {
+                stroke-dashoffset: 283;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar is-fixed-top has-shadow" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <span class="icon is-large has-text-primary">
+                        <i class="fas fa-gamepad fa-2x"></i>
+                    </span>
+                    <span class="title is-4 brand-logo ml-2">PlayInMo</span>
+                </a>
+                
+                <a role="button" class="navbar-burger" id="navbarBurger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+            
+            <div class="navbar-menu" id="navbarMenu">
+                <div class="navbar-end">
+                    <a class="navbar-item has-text-weight-medium" href="/">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span>Home</span>
+                    </a>
+                    <a class="navbar-item has-text-weight-medium" href="about.html">
+                        <span class="icon"><i class="fas fa-info-circle"></i></span>
+                        <span>About</span>
+                    </a>
+                    <a class="navbar-item has-text-weight-medium" href="contact.html">
+                        <span class="icon"><i class="fas fa-envelope"></i></span>
+                        <span>Contact</span>
+                    </a>
+                    
+                    <div class="navbar-item">
+                        <button class="button is-ghost" id="themeToggle">
+                            <span class="icon">
+                                <i class="fas fa-sun" id="themeIcon"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="padding-top: 3.25rem;">
+        <!-- Hero Section -->
+        <section class="hero is-medium visual-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="columns is-vcentered">
+                        <div class="column is-8 is-offset-2">
+                            <figure class="image is-128x128 is-inline-block mb-5">
+                                <div class="floating-element" style="background: linear-gradient(45deg, #FF6B35, #F7931E); border-radius: 50%; width: 128px; height: 128px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fab fa-google fa-3x has-text-white pulse-icon"></i>
+                                </div>
+                            </figure>
+                            <h1 class="title is-1 has-text-white">How Google Uses Data</h1>
+                            <p class="subtitle is-3 has-text-white-ter">Understanding data usage and privacy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        <!-- Info Card -->
+                        <div class="card mb-6" style="border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                            <div class="card-content">
+                                <div class="columns is-vcentered">
+                                    <div class="column is-3">
+                                        <figure class="image is-96x96">
+                                            <div style="background: linear-gradient(45deg, #4285F4, #34A853); border-radius: 50%; width: 96px; height: 96px; display: flex; align-items: center; justify-content: center;">
+                                                <i class="fas fa-info-circle fa-2x has-text-white"></i>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-3">About This Information</h2>
+                                        <p class="content has-text-grey-dark">
+                                            PlayInMo uses Google services including Google Analytics and Google AdSense. 
+                                            To provide transparency about how your data is used, Google requires that we link to their official information page.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Redirect Card -->
+                        <div class="card mb-6" style="border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                            <div class="card-content has-text-centered">
+                                <div class="columns is-vcentered">
+                                    <div class="column is-4">
+                                        <!-- Countdown Circle -->
+                                        <div style="position: relative; display: inline-block;">
+                                            <svg width="120" height="120" style="transform: rotate(-90deg);">
+                                                <circle cx="60" cy="60" r="45" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                                                <circle cx="60" cy="60" r="45" stroke="#6366f1" stroke-width="8" fill="none" class="countdown-circle"/>
+                                            </svg>
+                                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; font-weight: bold; color: #6366f1;">
+                                                <span id="countdown">5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <h3 class="title is-4">Automatic Redirect</h3>
+                                        <p class="subtitle is-6 has-text-grey">You'll be redirected to Google's official page in <span id="countdownText">5</span> seconds</p>
+                                        <div class="notification is-light" style="border-radius: 12px;">
+                                            <p class="has-text-grey-dark">
+                                                <strong>Destination:</strong><br>
+                                                <code>https://policies.google.com/technologies/partner-sites</code>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="card" style="border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                            <div class="card-content">
+                                <div class="columns">
+                                    <div class="column">
+                                        <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener" class="button is-primary is-large is-fullwidth is-rounded interactive-element">
+                                            <span class="icon">
+                                                <i class="fab fa-google"></i>
+                                            </span>
+                                            <span>Visit Google's Information Page</span>
+                                        </a>
+                                    </div>
+                                    <div class="column">
+                                        <a href="/" class="button is-light is-large is-fullwidth is-rounded interactive-element">
+                                            <span class="icon">
+                                                <i class="fas fa-home"></i>
+                                            </span>
+                                            <span>Return to PlayInMo</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section visual-section" style="background: #f8f9fa;">
+            <div class="container">
+                <div class="has-text-centered mb-6">
+                    <h2 class="title is-2">
+                        <span class="icon is-large has-text-info">
+                            <i class="fas fa-shield-alt"></i>
+                        </span>
+                        Your Privacy Matters
+                    </h2>
+                    <p class="subtitle is-4 has-text-grey">Learn about how we protect your data</p>
+                </div>
+                
+                <div class="columns">
+                    <div class="column is-4">
+                        <div class="card interactive-element" style="border-radius: 16px; height: 100%;">
+                            <div class="card-content has-text-centered">
+                                <figure class="image is-64x64 is-inline-block mb-4">
+                                    <div style="background: linear-gradient(45deg, #48bb78, #38a169); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-lock fa-2x has-text-white"></i>
+                                    </div>
+                                </figure>
+                                <h3 class="title is-5">Data Protection</h3>
+                                <p class="content">Your personal information is protected with industry-standard security measures.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column is-4">
+                        <div class="card interactive-element" style="border-radius: 16px; height: 100%;">
+                            <div class="card-content has-text-centered">
+                                <figure class="image is-64x64 is-inline-block mb-4">
+                                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-eye fa-2x has-text-white"></i>
+                                    </div>
+                                </figure>
+                                <h3 class="title is-5">Transparency</h3>
+                                <p class="content">We believe in complete transparency about how your data is collected and used.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column is-4">
+                        <div class="card interactive-element" style="border-radius: 16px; height: 100%;">
+                            <div class="card-content has-text-centered">
+                                <figure class="image is-64x64 is-inline-block mb-4">
+                                    <div style="background: linear-gradient(45deg, #f093fb, #f5576c); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user-check fa-2x has-text-white"></i>
+                                    </div>
+                                </figure>
+                                <h3 class="title is-5">User Control</h3>
+                                <p class="content">You have control over your privacy settings and can manage your data preferences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer has-background-dark">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6">
+                    <div class="content">
+                        <div class="level is-mobile mb-4">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <span class="icon is-large has-text-primary">
+                                        <i class="fas fa-gamepad fa-2x"></i>
+                                    </span>
+                                </div>
+                                <div class="level-item">
+                                    <span class="title is-4 brand-logo has-text-white">PlayInMo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="has-text-grey-light">Your destination for free online games</p>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="content">
+                        <h4 class="title is-5 has-text-white">
+                            <span class="icon has-text-warning"><i class="fas fa-balance-scale"></i></span>
+                            Legal
+                        </h4>
+                        <ul class="has-text-grey-light">
+                            <li><a href="privacy-policy.html" class="has-text-grey-light">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html" class="has-text-grey-light">Terms of Service</a></li>
+                            <li><a href="how-google-uses-data.html" class="has-text-grey-light">How Google Uses Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="has-background-grey">
+            <div class="has-text-centered">
+                <p class="has-text-grey-light">&copy; 2024 PlayInMo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById('navbarMenu');
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+            
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-theme');
+                    const isDark = document.body.classList.contains('dark-theme');
+                    localStorage.setItem('darkMode', isDark);
+                    
+                    if (isDark) {
+                        themeIcon.className = 'fas fa-moon';
+                    } else {
+                        themeIcon.className = 'fas fa-sun';
+                    }
+                });
+            }
+            
+            // Initialize theme
+            if (localStorage.getItem('darkMode') === 'true' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.body.classList.add('dark-theme');
+                if (themeIcon) themeIcon.className = 'fas fa-moon';
+            }
+            
+            // Countdown functionality
+            let countdown = 5;
+            const countdownElement = document.getElementById('countdown');
+            const countdownTextElement = document.getElementById('countdownText');
+            
+            const updateCountdown = () => {
+                if (countdownElement) {
+                    countdownElement.textContent = countdown;
+                }
+                if (countdownTextElement) {
+                    countdownTextElement.textContent = countdown;
+                }
+                countdown--;
+                
+                if (countdown >= 0) {
+                    setTimeout(updateCountdown, 1000);
+                }
+            };
+            
+            updateCountdown();
+            
+            // Auto-redirect after 5 seconds
+            setTimeout(function() {
+                window.open('https://policies.google.com/technologies/partner-sites', '_blank');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

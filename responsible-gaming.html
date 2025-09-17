@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsible Gaming - PlayInMo</title>
+    <meta name="description" content="PlayInMo is committed to promoting responsible gaming. Learn about our tools and resources to help you maintain a healthy gaming experience.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .icon-container {
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .gaming-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            height: 100%;
+        }
+        .gaming-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #10b981;
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .tool-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #10b981;
+        }
+        .warning-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .help-resource {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .help-resource:hover {
+            background: #e2e8f0;
+            transform: translateX(5px);
+        }
+        .contact-support {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .floating-hearts::before,
+        .floating-hearts::after {
+            content: '♥';
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+        .floating-hearts::before {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+        .floating-hearts::after {
+            top: 60%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+        .guideline-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .guideline-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        .stats-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        [data-theme="dark"] .tool-card,
+        [data-theme="dark"] .guideline-card {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        [data-theme="dark"] .tool-card:hover,
+        [data-theme="dark"] .guideline-card:hover {
+            background: #334155;
+        }
+        [data-theme="dark"] .help-resource {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        [data-theme="dark"] .help-resource:hover {
+            background: #334155;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <i class="fas fa-gamepad has-text-white"></i>
+                </div>
+                <span class="title is-4 has-text-weight-bold" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PlayInMo</span>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="about.html">About</a>
+                <a class="navbar-item" href="contact.html">Contact</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <button id="themeToggle" class="button is-rounded">
+                            <i class="fas fa-sun" id="theme-icon"></i>
+                        </button>
+                        <a class="button is-primary is-rounded" href="/">
+                            <strong>Back to Games</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main style="margin-top: 3.25rem;">
+        <!-- Hero Section -->
+        <section class="hero is-medium hero-gradient">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="floating-hearts"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="icon-container">
+                            <i class="fas fa-heart has-text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h1 class="title is-1 has-text-white has-text-weight-bold">Responsible Gaming</h1>
+                        <p class="subtitle is-4 has-text-white-ter">Gaming should be fun, safe, and enjoyable for everyone</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" style="padding: 3rem 1rem;">
+            <!-- Introduction Section -->
+            <section class="section">
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="card gaming-card">
+                            <div class="card-content has-text-centered">
+                                <h2 class="title is-3 has-text-primary mb-4">Our Commitment</h2>
+                                <p class="is-size-5 mb-4">At PlayInMo, we believe gaming should be an enjoyable and positive experience for all our users. We are committed to promoting responsible gaming practices and providing tools to help maintain a healthy relationship with gaming.</p>
+                                <p>While our games are free-to-play and designed for entertainment, we recognize the importance of helping users maintain balance in their gaming habits and overall well-being.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Healthy Gaming Tips -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">What is Healthy Gaming?</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-half">
+                            <div class="card gaming-card">
+                                <div class="card-content has-text-centered">
+                                    <div class="feature-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <h3 class="title is-4">Time Management</h3>
+                                    <p>Set reasonable time limits for gaming sessions and take regular breaks to rest your eyes and stretch.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="card gaming-card">
+                                <div class="card-content has-text-centered">
+                                    <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <h3 class="title is-4">Balance</h3>
+                                    <p>Maintain a healthy balance between gaming and other important activities like work, school, exercise, and socializing.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="card gaming-card">
+                                <div class="card-content has-text-centered">
+                                    <div class="feature-icon" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <h3 class="title is-4">Emotional Well-being</h3>
+                                    <p>Gaming should enhance your mood and provide relaxation, not cause stress, anxiety, or negative emotions.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="card gaming-card">
+                                <div class="card-content has-text-centered">
+                                    <div class="feature-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <h3 class="title is-4">Social Connection</h3>
+                                    <p>Use gaming as a way to connect with others, but don't let it replace face-to-face social interactions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Warning Signs -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Recognizing Warning Signs</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-10">
+                            <div class="notification is-warning is-light">
+                                <h3 class="title is-4 has-text-warning-dark">Be aware of these signs that gaming might be becoming problematic:</h3>
+                            </div>
+                            <div class="columns is-multiline">
+                                <div class="column is-4">
+                                    <div class="warning-card">
+                                        <h4 class="title is-5 has-text-warning-dark">Time-Related Signs</h4>
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Gaming longer than intended</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Losing track of time</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Gaming late into night</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Constantly thinking about games</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="column is-4">
+                                    <div class="warning-card">
+                                        <h4 class="title is-5 has-text-warning-dark">Social & Personal Signs</h4>
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Neglecting responsibilities</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Avoiding social activities</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Lying about gaming time</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Irritability when unable to game</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="column is-4">
+                                    <div class="warning-card">
+                                        <h4 class="title is-5 has-text-warning-dark">Physical & Mental Signs</h4>
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Eye strain, headaches</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Changes in sleep patterns</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Anxiety when not gaming</li>
+                                            <li class="mb-2"><i class="fas fa-exclamation-triangle has-text-warning mr-2"></i>Gaming to escape problems</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gaming Tools -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Our Responsible Gaming Tools</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-3">
+                            <div class="tool-card">
+                                <div class="stats-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                    <i class="fas fa-stopwatch"></i>
+                                </div>
+                                <h4 class="title is-5">Session Timers</h4>
+                                <p class="mb-4">Set gaming session time limits and receive reminders when it's time to take a break.</p>
+                                <button class="button is-warning is-rounded pulse-btn" onclick="showToolMessage('Session Timer')">
+                                    <span class="icon"><i class="fas fa-clock"></i></span>
+                                    <span>Set Timer</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="tool-card">
+                                <div class="stats-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 class="title is-5">Play Time Tracking</h4>
+                                <p class="mb-4">Monitor your daily and weekly gaming time to maintain awareness of your habits.</p>
+                                <button class="button is-info is-rounded pulse-btn" onclick="showToolMessage('Play Time Tracking')">
+                                    <span class="icon"><i class="fas fa-chart-bar"></i></span>
+                                    <span>View Stats</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="tool-card">
+                                <div class="stats-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                    <i class="fas fa-pause"></i>
+                                </div>
+                                <h4 class="title is-5">Break Reminders</h4>
+                                <p class="mb-4">Receive periodic reminders to take breaks, stretch, and rest your eyes.</p>
+                                <button class="button is-success is-rounded pulse-btn" onclick="showToolMessage('Break Reminders')">
+                                    <span class="icon"><i class="fas fa-bell"></i></span>
+                                    <span>Enable Reminders</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="tool-card">
+                                <div class="stats-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                                    <i class="fas fa-ban"></i>
+                                </div>
+                                <h4 class="title is-5">Self-Exclusion</h4>
+                                <p class="mb-4">Temporarily restrict your access to games if you need a break from gaming.</p>
+                                <button class="button is-danger is-rounded pulse-btn" onclick="showToolMessage('Self-Exclusion')">
+                                    <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                                    <span>Manage Access</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guidelines Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Healthy Gaming Guidelines</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <div class="guideline-card">
+                                <h4 class="title is-5 has-text-info">Before You Start Gaming</h4>
+                                <ul style="list-style: none;">
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Set a time limit for your session</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Complete important tasks first</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Ensure comfortable environment</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Have water and snacks nearby</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="guideline-card">
+                                <h4 class="title is-5 has-text-warning">During Gaming</h4>
+                                <ul style="list-style: none;">
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Take breaks every hour</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Stay hydrated and maintain posture</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Be mindful of your feelings</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Don't game when angry or upset</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="guideline-card">
+                                <h4 class="title is-5 has-text-success">After Gaming</h4>
+                                <ul style="list-style: none;">
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Reflect on how the session made you feel</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Engage in other activities you enjoy</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Maintain social connections offline</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Get adequate sleep and exercise</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="guideline-card">
+                                <h4 class="title is-5 has-text-primary">For Parents</h4>
+                                <ul style="list-style: none;">
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Monitor your child's gaming time</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Encourage other activities</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Play games together as family</li>
+                                    <li class="mb-2"><i class="fas fa-check has-text-success mr-2"></i>Discuss online safety</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Help Resources -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Getting Help</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-10">
+                            <div class="notification is-info is-light mb-5">
+                                <p class="has-text-centered is-size-5">If you or someone you know is struggling with gaming habits, help is available</p>
+                            </div>
+                            <div class="columns is-multiline">
+                                <div class="column is-4">
+                                    <div class="help-resource">
+                                        <h4 class="title is-5">Professional Support</h4>
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-user-md has-text-info mr-2"></i>Mental health professional</li>
+                                            <li class="mb-2"><i class="fas fa-hospital has-text-info mr-2"></i>Healthcare provider</li>
+                                            <li class="mb-2"><i class="fas fa-comments has-text-info mr-2"></i>Counselor or therapist</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="column is-4">
+                                    <div class="help-resource">
+                                        <h4 class="title is-5">Support Organizations</h4>
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-external-link-alt has-text-success mr-2"></i><a href="https://www.gamingdisorders.org/" target="_blank">Gaming Disorders Support</a></li>
+                                            <li class="mb-2"><i class="fas fa-external-link-alt has-text-success mr-2"></i><a href="https://www.samhsa.gov/" target="_blank">SAMHSA (US)</a></li>
+                                            <li class="mb-2"><i class="fas fa-external-link-alt has-text-success mr-2"></i><a href="https://www.mind.org.uk/" target="_blank">Mind (UK)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="column is-4">
+                                    <div class="help-resource">
+                                        <h4 class="title is-5">Crisis Support</h4>
+                                        <ul style="list-style: none;">
+                                            <li class="mb-2"><i class="fas fa-phone has-text-danger mr-2"></i>Suicide Prevention: 988 (US)</li>
+                                            <li class="mb-2"><i class="fas fa-phone has-text-danger mr-2"></i>Samaritans: 116 123 (UK)</li>
+                                            <li class="mb-2"><i class="fas fa-sms has-text-danger mr-2"></i>Crisis Text: HOME to 741741</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Support -->
+            <section class="section">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="contact-support">
+                                <h2 class="title is-3 has-text-white">Need Support?</h2>
+                                <p class="subtitle is-5 has-text-white-ter mb-5">If you have concerns about gaming habits or need assistance with our responsible gaming tools, we're here to help.</p>
+                                <div class="buttons is-centered">
+                                    <a href="contact.html" class="button is-white is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <span>Contact Support Team</span>
+                                    </a>
+                                    <a href="mailto:support@playinmo.com" class="button is-white is-outlined is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </span>
+                                        <span>Email Support</span>
+                                    </a>
+                                </div>
+                                <p class="has-text-white-bis mt-4">All communications are handled with complete confidentiality and care.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" style="background: #1e293b; color: white;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="is-flex is-align-items-center mb-4">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-gamepad has-text-white"></i>
+                        </div>
+                        <span class="title is-4 has-text-white has-text-weight-bold">PlayInMo</span>
+                    </div>
+                    <p class="has-text-grey-light">Your destination for free online games</p>
+                </div>
+                <div class="column is-half">
+                    <h4 class="title is-5 has-text-white mb-4">Resources</h4>
+                    <ul style="list-style: none;">
+                        <li class="mb-2"><a href="responsible-gaming.html" class="has-text-grey-light">Responsible Gaming</a></li>
+                        <li class="mb-2"><a href="help.html" class="has-text-grey-light">Help Center</a></li>
+                        <li class="mb-2"><a href="contact.html" class="has-text-grey-light">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background: #475569;">
+            <div class="has-text-centered">
+                <p class="has-text-grey-light">&copy; 2024 PlayInMo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function updateTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateTheme();
+        });
+        
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateTheme();
+        
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+        
+        // Card hover animations
+        document.querySelectorAll('.gaming-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Tool interaction
+        function showToolMessage(toolName) {
+            alert(`${toolName} feature would be available in your account settings. This helps promote healthy gaming habits.`);
+        }
+    </script>
+</body>
+</html>

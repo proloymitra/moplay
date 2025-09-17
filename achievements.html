@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - PlayInMo</title>
+    <meta name="description" content="Unlock achievements and earn rewards as you play games on PlayInMo">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google tag (gtag.js) — single loader -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16099717839"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      // Google Ads
+      gtag('config', 'AW-16099717839');
+    
+      // GA4 (same gtag instance — do NOT add another <script src=...> for GA4)
+      gtag('config', 'G-8X0LFCXF2N');
+    </script>
+
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Achievements - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link">
+                        <i class="fas fa-gamepad"></i>
+                        <span>PlayInMo</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+                    <a href="achievements.html" class="nav-link active">Achievements</a>
+                    <a href="/chat.html" class="nav-link">Chat</a>
+                    <div class="user-section">
+                        <button class="btn btn-primary" id="loginBtn">Login</button>
+                        <button class="btn btn-secondary" id="signupBtn">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-trophy"></i> Achievements</h1>
+                <p>Unlock badges and earn rewards as you play</p>
+            </div>
+
+            <div class="achievements-summary">
+                <div class="progress-card">
+                    <div class="progress-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="progress-info">
+                        <h3>Your Progress</h3>
+                        <div class="progress-stats">
+                            <span id="unlockedCount">0</span> of <span id="totalCount">0</span> achievements
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-percentage" id="progressPercentage">0%</div>
+                    </div>
+                </div>
+                
+                <div class="points-card">
+                    <div class="points-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="points-info">
+                        <h3>Achievement Points</h3>
+                        <div class="points-total" id="totalPoints">0</div>
+                        <div class="points-next">
+                            Next milestone: <span id="nextMilestone">100</span> points
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="streak-card">
+                    <div class="streak-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="streak-info">
+                        <h3>Daily Streak</h3>
+                        <div class="streak-count" id="streakCount">0</div>
+                        <div class="streak-text">days in a row</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievements-filters">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="unlocked">Unlocked</button>
+                    <button class="filter-tab" data-filter="locked">Locked</button>
+                    <button class="filter-tab" data-filter="gaming">Gaming</button>
+                    <button class="filter-tab" data-filter="social">Social</button>
+                    <button class="filter-tab" data-filter="special">Special</button>
+                </div>
+                
+                <div class="filter-sort">
+                    <select id="sortBy" class="filter-select">
+                        <option value="category">Sort by Category</option>
+                        <option value="points">Sort by Points</option>
+                        <option value="rarity">Sort by Rarity</option>
+                        <option value="date">Sort by Date</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="achievements-grid" id="achievementsGrid">
+                <div class="loading-container">
+                    <div class="loading"></div>
+                    <p>Loading achievements...</p>
+                </div>
+            </div>
+
+            <div class="milestones-section">
+                <h2>Milestones</h2>
+                <div class="milestones-track">
+                    <div class="milestone" data-points="100">
+                        <div class="milestone-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="milestone-info">
+                            <h4>Rising Star</h4>
+                            <p>100 points</p>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone" data-points="500">
+                        <div class="milestone-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <div class="milestone-info">
+                            <h4>Dedicated Player</h4>
+                            <p>500 points</p>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone" data-points="1000">
+                        <div class="milestone-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="milestone-info">
+                            <h4>Champion</h4>
+                            <p>1000 points</p>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone" data-points="2500">
+                        <div class="milestone-icon">
+                            <i class="fas fa-dragon"></i>
+                        </div>
+                        <div class="milestone-info">
+                            <h4>Legend</h4>
+                            <p>2500 points</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-achievements" id="recentAchievements" style="display: none;">
+                <h2>Recently Unlocked</h2>
+                <div class="recent-list">
+                    <!-- Recent achievements will be populated here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PlayInMo - Game Achievements</h3>
+                    <p>Unlock achievements while playing free online games! Earn rewards in action games, racing games, puzzle games, and shooting games. Track your gaming progress and compete with other players.</p>
+                    <div class="footer-keywords">
+                        <span>Game Achievements</span> • <span>Gaming Rewards</span> • <span>Free Games</span> • <span>Online Gaming</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Achievement Categories</h4>
+                    <ul>
+                        <li><a href="/?category=action">Action Games Achievements</a></li>
+                        <li><a href="/?category=racing">Racing Games Rewards</a></li>
+                        <li><a href="/?category=puzzle">Puzzle Games Badges</a></li>
+                        <li><a href="/?category=shooting">Shooting Games Trophies</a></li>
+                        <li><a href="/?category=multiplayer">Multiplayer Achievements</a></li>
+                        <li><a href="/?category=adventure">Adventure Game Rewards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Gaming Progress</h4>
+                    <ul>
+                        <li><a href="achievements.html">Game Achievements</a></li>
+                        <li><a href="leaderboard.html">Gaming Leaderboard</a></li>
+                        <li><a href="/">Play Free Games</a></li>
+                        <li><a href="/?type=new">New Games</a></li>
+                        <li><a href="/?type=best">Best Games</a></li>
+                        <li><a href="/chat.html">Gaming Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Gaming Hub</h4>
+                    <ul>
+                        <li><a href="help.html">Gaming Help</a></li>
+                        <li><a href="about.html">About Gaming</a></li>
+                        <li><a href="contact.html">Game Support</a></li>
+                        <li><a href="privacy-policy.html">Gaming Privacy</a></li>
+                        <li><a href="terms-of-service.html">Gaming Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="seo-footer-content">
+                <div class="seo-section">
+                    <h4>Game Achievements - Unlock Rewards in Free Online Games</h4>
+                    <p>Unlock <strong>game achievements</strong> and earn rewards while playing <strong>free games</strong>. Progress through <strong>action games</strong>, <strong>racing games</strong>, <strong>puzzle games</strong>, and <strong>shooting games</strong>. Our <strong>achievement system</strong> works across all <strong>browser games</strong>, <strong>HTML5 games</strong>, and <strong>mobile games</strong>. Join the <strong>gaming community</strong> and earn badges in the <strong>best games</strong> online.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PlayInMo - <strong>Game Achievements</strong> | <strong>Gaming Rewards</strong> | <strong>Free Games</strong> | <strong>Achievement Badges</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Achievement Unlock Modal -->
+    <div class="modal" id="achievementModal">
+        <div class="modal-content achievement-modal">
+            <div class="achievement-unlock">
+                <div class="unlock-animation">
+                    <div class="unlock-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="unlock-particles"></div>
+                </div>
+                <h2>Achievement Unlocked!</h2>
+                <div class="unlocked-achievement">
+                    <div class="achievement-badge">
+                        <span class="achievement-emoji">🏆</span>
+                    </div>
+                    <div class="achievement-details">
+                        <h3 id="unlockedTitle">Achievement Name</h3>
+                        <p id="unlockedDescription">Achievement description</p>
+                        <div class="achievement-reward">
+                            <i class="fas fa-star"></i>
+                            <span id="unlockedPoints">0</span> points
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="closeAchievementModal()">Awesome!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/theme-toggle.js"></script>
+    <script src="assets/js/achievements.js"></script>
+</body>
+</html>

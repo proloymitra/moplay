@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GA Debug Test</title>
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Debug Test - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true,
+            debug_mode: true
+        });
+        
+        // Debug output
+        setTimeout(() => {
+            console.log('=== GA DEBUG REPORT ===');
+            console.log('Current URL:', window.location.href);
+            console.log('gtag function available:', typeof gtag === 'function');
+            console.log('dataLayer contents:', window.dataLayer);
+            console.log('Google Analytics loaded:', typeof google !== 'undefined' && google.analytics);
+            
+            // Send test event
+            if (typeof gtag === 'function') {
+                gtag('event', 'debug_test', {
+                    event_category: 'Debug',
+                    event_label: 'Manual Test',
+                    debug_mode: true
+                });
+                console.log('Test event sent');
+            }
+            console.log('=== END DEBUG ===');
+        }, 3000);
+    </script>
+</head>
+<body>
+    <h1>Google Analytics Debug Test</h1>
+    <p>Check browser console for debug information.</p>
+    <p>Visit this page and check GA Real-Time reports.</p>
+    
+    <button onclick="gtag('event', 'button_click', {event_category: 'Test', event_label: 'Debug Button'})">
+        Send Test Event
+    </button>
+</body>
+</html>

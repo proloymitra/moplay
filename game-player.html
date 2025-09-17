@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Player - PlayInMo</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16909717839"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'AW-16909717839');
+        </script>
+
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Game Player - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link">
+                        <i class="fas fa-gamepad"></i>
+                        <span>PlayInMo</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="leaderboard.html" class="nav-link">
+                        <i class="fas fa-trophy"></i> Leaderboard
+                    </a>
+                    <a href="achievements.html" class="nav-link">
+                        <i class="fas fa-medal"></i> Achievements
+                    </a>
+                    <a href="/chat.html" class="nav-link">
+                        <i class="fas fa-comments"></i> Chat
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="game-header">
+                <button class="btn btn-secondary" id="back-to-games-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Games
+                </button>
+                <h1 id="gameTitle">Loading Game...</h1>
+                <div class="game-stats">
+                    <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <span id="gameRating">0</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-play"></i>
+                        <span id="gamePlays">0</span> plays
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pre-roll Ad Container -->
+            <div class="ad-container" id="prerollAd" style="display: none;">
+                <div class="ad-content">
+                    <h3>Advertisement</h3>
+                    <div class="ad-placeholder">
+                        <p>Advertisement content will be displayed here</p>
+                        <div class="ad-timer">
+                            <span id="adCountdown">5</span> seconds remaining
+                        </div>
+                    </div>
+                    <button class="ad-skip" id="skipPrerollAd" style="display: none;">
+                        Skip Ad <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Game Container -->
+            <div class="game-container" id="gameContainer">
+                <div class="game-player">
+                    <div class="game-loading" id="gameLoading">
+                        <div class="loading-spinner">
+                            <div class="loading"></div>
+                        </div>
+                        <p>Loading game...</p>
+                    </div>
+                    <iframe id="gameFrame" class="game-frame" style="display: none;" allowfullscreen></iframe>
+                </div>
+                
+                <div class="game-controls">
+                    <button class="btn btn-primary" id="fullscreenBtn">
+                        <i class="fas fa-expand"></i> Fullscreen
+                    </button>
+                    <button class="btn btn-secondary" id="refreshBtn">
+                        <i class="fas fa-refresh"></i> Refresh
+                    </button>
+                    <button class="btn btn-secondary" id="reportBtn">
+                        <i class="fas fa-flag"></i> Report Issue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Post-roll Ad Container -->
+            <div class="ad-container" id="postrollAd" style="display: none;">
+                <div class="ad-content">
+                    <h3>Thank you for playing!</h3>
+                    <div class="ad-placeholder">
+                        <p>Advertisement content will be displayed here</p>
+                        <div class="ad-timer">
+                            <span id="postAdCountdown">10</span> seconds remaining
+                        </div>
+                    </div>
+                    <button class="ad-skip" id="skipPostrollAd" style="display: none;">
+                        Continue <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Game Information -->
+            <div class="game-info-section">
+                <div class="game-details">
+                    <h2>Game Details</h2>
+                    <div class="game-description" id="gameDescription">
+                        Loading game information...
+                    </div>
+                    <div class="game-instructions" id="gameInstructions">
+                        <!-- Instructions will be loaded here -->
+                    </div>
+                    <div class="game-categories" id="gameCategories">
+                        <!-- Categories will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="game-sidebar">
+                    <div class="related-games">
+                        <h3>Related Games</h3>
+                        <div class="related-games-list" id="relatedGamesList">
+                            <!-- Related games will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <div class="game-rating-section">
+                        <h3>Rate This Game</h3>
+                        <div class="rating-stars" id="userRating">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <p class="rating-text">Click to rate this game</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <div class="comment-form">
+                    <textarea id="commentText" placeholder="Share your thoughts about this game..." rows="3"></textarea>
+                    <button class="btn btn-primary" id="submitComment">Post Comment</button>
+                </div>
+                <div class="comments-list" id="commentsList">
+                    <!-- Comments will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PlayInMo - Free Online Games</h3>
+                    <p>Play thousands of free games including action games, racing games, puzzle games, and shooting games. Enjoy multiplayer games, adventure games, and fun games for all ages.</p>
+                    <div class="footer-keywords">
+                        <span>Free Games</span> • <span>Online Games</span> • <span>Browser Games</span> • <span>HTML5 Games</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Game Categories</h4>
+                    <ul>
+                        <li><a href="/?category=action">Action Games</a></li>
+                        <li><a href="/?category=racing">Car Racing Games</a></li>
+                        <li><a href="/?category=puzzle">Puzzle Games</a></li>
+                        <li><a href="/?category=shooting">Shooting Games</a></li>
+                        <li><a href="/?category=adventure">Adventure Games</a></li>
+                        <li><a href="/?category=multiplayer">Multiplayer Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Gaming Features</h4>
+                    <ul>
+                        <li><a href="/?type=new">New Games</a></li>
+                        <li><a href="/?type=best">Best Games</a></li>
+                        <li><a href="/?type=cool">Cool Games</a></li>
+                        <li><a href="leaderboard.html">Gaming Leaderboard</a></li>
+                        <li><a href="achievements.html">Game Achievements</a></li>
+                        <li><a href="help.html">Gaming Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Gaming Community</h4>
+                    <ul>
+                        <li><a href="about.html">About Our Games</a></li>
+                        <li><a href="contact.html">Game Support</a></li>
+                        <li><a href="privacy-policy.html">Gaming Privacy</a></li>
+                        <li><a href="terms-of-service.html">Gaming Terms</a></li>
+                        <li><a href="/chat.html">Gamer Chat</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="seo-footer-content">
+                <div class="seo-section">
+                    <h4>Play Free Online Games at PlayInMo</h4>
+                    <p>Discover thousands of <strong>free games</strong> including <strong>action games</strong>, <strong>racing games</strong>, <strong>puzzle games</strong>, and <strong>shooting games</strong>. Our <strong>online games</strong> platform features <strong>browser games</strong>, <strong>HTML5 games</strong>, and <strong>mobile games</strong> for all devices. Join our <strong>gaming community</strong> and enjoy <strong>multiplayer games</strong>, <strong>adventure games</strong>, and the <strong>best games</strong> collection online.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PlayInMo - Free Online Gaming Platform | <strong>Free Games</strong> | <strong>Browser Games</strong> | <strong>HTML5 Games</strong> | <strong>Mobile Gaming</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/theme-toggle.js"></script>
+    <script src="assets/js/game-player.js"></script>
+</body>
+</html>

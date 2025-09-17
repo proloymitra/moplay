@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - PlayInMo</title>
+    <meta name="description" content="View the top players and compete for the highest scores on PlayInMo gaming platform">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16909717839"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'AW-16909717839');
+        </script>
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Leaderboard - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link">
+                        <i class="fas fa-gamepad"></i>
+                        <span>PlayInMo</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="leaderboard.html" class="nav-link active">Leaderboard</a>
+                    <a href="achievements.html" class="nav-link">Achievements</a>
+                    <a href="/chat.html" class="nav-link">Chat</a>
+                    <div class="user-section">
+                        <button class="btn btn-primary" id="loginBtn">Login</button>
+                        <button class="btn btn-secondary" id="signupBtn">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-trophy"></i> Leaderboard</h1>
+                <p>Compete with players worldwide and climb to the top!</p>
+            </div>
+
+            <div class="leaderboard-filters">
+                <div class="filter-group">
+                    <label>Time Period:</label>
+                    <select id="timePeriod" class="filter-select">
+                        <option value="all">All Time</option>
+                        <option value="month">This Month</option>
+                        <option value="week">This Week</option>
+                        <option value="today">Today</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Category:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="overall">Overall</option>
+                        <option value="action">Action Games</option>
+                        <option value="puzzle">Puzzle Games</option>
+                        <option value="racing">Racing Games</option>
+                        <option value="strategy">Strategy Games</option>
+                        <option value="adventure">Adventure Games</option>
+                        <option value="sports">Sports Games</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Metric:</label>
+                    <select id="metricFilter" class="filter-select">
+                        <option value="score">Total Score</option>
+                        <option value="games">Games Played</option>
+                        <option value="achievements">Achievements</option>
+                        <option value="time">Play Time</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="leaderboard-section">
+                <div class="top-players">
+                    <h2>Top 3 Players</h2>
+                    <div class="podium">
+                        <div class="podium-place second" id="secondPlace">
+                            <div class="podium-avatar">
+                                <span>2</span>
+                            </div>
+                            <div class="podium-info">
+                                <h3>Loading...</h3>
+                                <p>0 points</p>
+                            </div>
+                            <div class="podium-rank">
+                                <i class="fas fa-medal" style="color: #c0c0c0;"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="podium-place first" id="firstPlace">
+                            <div class="podium-avatar">
+                                <span>1</span>
+                            </div>
+                            <div class="podium-info">
+                                <h3>Loading...</h3>
+                                <p>0 points</p>
+                            </div>
+                            <div class="podium-rank">
+                                <i class="fas fa-crown" style="color: #ffd700;"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="podium-place third" id="thirdPlace">
+                            <div class="podium-avatar">
+                                <span>3</span>
+                            </div>
+                            <div class="podium-info">
+                                <h3>Loading...</h3>
+                                <p>0 points</p>
+                            </div>
+                            <div class="podium-rank">
+                                <i class="fas fa-medal" style="color: #cd7f32;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="current-user-rank" id="currentUserRank" style="display: none;">
+                    <h3>Your Ranking</h3>
+                    <div class="user-rank-card">
+                        <div class="rank-position">#0</div>
+                        <div class="rank-info">
+                            <h4>Your Username</h4>
+                            <p>0 total points</p>
+                            <div class="rank-stats">
+                                <span><i class="fas fa-gamepad"></i> 0 games</span>
+                                <span><i class="fas fa-trophy"></i> 0 achievements</span>
+                                <span><i class="fas fa-clock"></i> 0h played</span>
+                            </div>
+                        </div>
+                        <div class="rank-change">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leaderboard-table">
+                    <h2>All Players</h2>
+                    <div class="table-container">
+                        <table class="leaderboard-list">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Player</th>
+                                    <th>Score</th>
+                                    <th>Games</th>
+                                    <th>Achievements</th>
+                                    <th>Join Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboardTableBody">
+                                <tr>
+                                    <td colspan="6" class="loading-row">
+                                        <div class="loading"></div>
+                                        Loading leaderboard...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination" id="paginationControls">
+                        <button class="btn btn-secondary" id="prevPage" disabled>
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <span class="page-info">Page 1 of 1</span>
+                        <button class="btn btn-secondary" id="nextPage">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaderboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalPlayers">0</h3>
+                        <p>Total Players</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalGames">0</h3>
+                        <p>Games Played</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalScore">0</h3>
+                        <p>Total Score</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalTime">0h</h3>
+                        <p>Time Played</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PlayInMo - Gaming Leaderboard</h3>
+                    <p>Compete in free online games and climb the leaderboard! Play action games, racing games, puzzle games, and shooting games. Track your gaming achievements and join the best gaming community online.</p>
+                    <div class="footer-keywords">
+                        <span>Gaming Leaderboard</span> • <span>Free Games</span> • <span>Online Competition</span> • <span>Gaming Community</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Top Game Categories</h4>
+                    <ul>
+                        <li><a href="/?category=action">Action Games Leaderboard</a></li>
+                        <li><a href="/?category=racing">Racing Games Competition</a></li>
+                        <li><a href="/?category=puzzle">Puzzle Games Rankings</a></li>
+                        <li><a href="/?category=shooting">Shooting Games Scores</a></li>
+                        <li><a href="/?category=multiplayer">Multiplayer Game Rankings</a></li>
+                        <li><a href="/?category=adventure">Adventure Games Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Gaming Community</h4>
+                    <ul>
+                        <li><a href="leaderboard.html">Gaming Leaderboard</a></li>
+                        <li><a href="achievements.html">Game Achievements</a></li>
+                        <li><a href="/">Play Free Games</a></li>
+                        <li><a href="/chat.html">Gamer Chat</a></li>
+                        <li><a href="/?type=new">New Games</a></li>
+                        <li><a href="/?type=best">Best Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Gaming Support</h4>
+                    <ul>
+                        <li><a href="help.html">Gaming Help</a></li>
+                        <li><a href="about.html">About Our Games</a></li>
+                        <li><a href="contact.html">Game Support</a></li>
+                        <li><a href="privacy-policy.html">Gaming Privacy</a></li>
+                        <li><a href="terms-of-service.html">Gaming Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="seo-footer-content">
+                <div class="seo-section">
+                    <h4>Gaming Leaderboard - Compete in Free Online Games</h4>
+                    <p>Climb the <strong>gaming leaderboard</strong> by playing <strong>free games</strong> including <strong>action games</strong>, <strong>racing games</strong>, and <strong>puzzle games</strong>. Track your progress in <strong>browser games</strong>, <strong>HTML5 games</strong>, and <strong>mobile games</strong>. Join our <strong>gaming community</strong> to compete in <strong>multiplayer games</strong> and unlock <strong>achievements</strong> in the <strong>best games</strong> online.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PlayInMo - <strong>Gaming Leaderboard</strong> | <strong>Free Games</strong> | <strong>Online Competition</strong> | <strong>Gaming Community</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/theme-toggle.js"></script>
+    <script src="assets/js/leaderboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy - PlayInMo</title>
+    <meta name="description" content="Learn about how PlayInMo uses cookies and similar technologies to enhance your gaming experience and provide personalized content.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #e97451 0%, #d73502 100%);
+        }
+        .icon-container {
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .cookie-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .cookie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #e97451;
+        }
+        .cookie-type {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .stats-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: scale(1.05);
+        }
+        .browser-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .browser-card:hover {
+            background: #e2e8f0;
+            transform: translateX(5px);
+        }
+        .browser-icon {
+            width: 40px;
+            height: 40px;
+            background: #4f46e5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+        }
+        [data-theme="dark"] .browser-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        [data-theme="dark"] .browser-card:hover {
+            background: #334155;
+        }
+        .contact-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+        .floating-elements::before {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .floating-elements::after {
+            top: 70%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <i class="fas fa-gamepad has-text-white"></i>
+                </div>
+                <span class="title is-4 has-text-weight-bold" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PlayInMo</span>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="about.html">About</a>
+                <a class="navbar-item" href="contact.html">Contact</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <button id="themeToggle" class="button is-rounded">
+                            <i class="fas fa-sun" id="theme-icon"></i>
+                        </button>
+                        <a class="button is-primary is-rounded" href="/">
+                            <strong>Back to Games</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main style="margin-top: 3.25rem;">
+        <!-- Hero Section -->
+        <section class="hero is-medium hero-gradient">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="floating-elements"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="icon-container">
+                            <i class="fas fa-cookie-bite has-text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h1 class="title is-1 has-text-white has-text-weight-bold">Cookie Policy</h1>
+                        <p class="subtitle is-4 has-text-white-ter">Understanding how we use cookies to enhance your experience</p>
+                        <p class="has-text-white-bis">Last updated: December 19, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" style="padding: 3rem 1rem;">
+            <!-- Introduction Section -->
+            <section class="section">
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="card cookie-card">
+                            <div class="card-content">
+                                <div class="content">
+                                    <h2 class="title is-3 has-text-primary">What Are Cookies?</h2>
+                                    <p class="is-size-5">Cookies are small text files that are stored on your device when you visit a website. They help websites work more efficiently and provide valuable insights about user interactions.</p>
+                                    <p>PlayInMo uses cookies and similar technologies to enhance your gaming experience, remember your preferences, and provide personalized content and advertisements.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cookie Types Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Types of Cookies We Use</h2>
+                    <div class="columns is-multiline">
+                        <!-- Essential Cookies -->
+                        <div class="column is-half">
+                            <div class="card cookie-card is-fullheight">
+                                <div class="card-content">
+                                    <div class="cookie-type">Essential</div>
+                                    <div class="feature-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <h3 class="title is-4">Essential Cookies</h3>
+                                    <p class="mb-4">These cookies are necessary for the website to function properly and cannot be disabled.</p>
+                                    <div class="tags">
+                                        <span class="tag is-light">Authentication</span>
+                                        <span class="tag is-light">Security</span>
+                                        <span class="tag is-light">Load Balancing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Cookies -->
+                        <div class="column is-half">
+                            <div class="card cookie-card is-fullheight">
+                                <div class="card-content">
+                                    <div class="cookie-type">Performance</div>
+                                    <div class="feature-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h3 class="title is-4">Performance & Analytics</h3>
+                                    <p class="mb-4">These cookies help us measure and improve site performance and understand user behavior.</p>
+                                    <div class="tags">
+                                        <span class="tag is-light">Google Analytics</span>
+                                        <span class="tag is-light">Game Analytics</span>
+                                        <span class="tag is-light">Error Tracking</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Functional Cookies -->
+                        <div class="column is-half">
+                            <div class="card cookie-card is-fullheight">
+                                <div class="card-content">
+                                    <div class="cookie-type">Functional</div>
+                                    <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <h3 class="title is-4">Functional Cookies</h3>
+                                    <p class="mb-4">These cookies enable enhanced functionality and personalization features.</p>
+                                    <div class="tags">
+                                        <span class="tag is-light">Preferences</span>
+                                        <span class="tag is-light">Theme Settings</span>
+                                        <span class="tag is-light">Game Progress</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advertising Cookies -->
+                        <div class="column is-half">
+                            <div class="card cookie-card is-fullheight">
+                                <div class="card-content">
+                                    <div class="cookie-type">Advertising</div>
+                                    <div class="feature-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                        <i class="fas fa-bullhorn"></i>
+                                    </div>
+                                    <h3 class="title is-4">Advertising Cookies</h3>
+                                    <p class="mb-4">These cookies help deliver relevant advertisements and measure campaign effectiveness.</p>
+                                    <div class="tags">
+                                        <span class="tag is-light">Google AdSense</span>
+                                        <span class="tag is-light">Ad Targeting</span>
+                                        <span class="tag is-light">Frequency Control</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Third-Party Services -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Third-Party Services</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-10">
+                            <div class="card cookie-card">
+                                <div class="card-content">
+                                    <div class="columns is-multiline">
+                                        <div class="column is-4">
+                                            <div class="has-text-centered">
+                                                <div class="feature-icon" style="background: linear-gradient(135deg, #ea4335 0%, #fbbc05 50%, #34a853 75%, #4285f4 100%);">
+                                                    <i class="fab fa-google"></i>
+                                                </div>
+                                                <h4 class="title is-5">Google Services</h4>
+                                                <ul class="has-text-left">
+                                                    <li>Google Analytics</li>
+                                                    <li>Google AdSense</li>
+                                                    <li>Google Fonts</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="column is-4">
+                                            <div class="has-text-centered">
+                                                <div class="feature-icon" style="background: linear-gradient(135deg, #1da1f2 0%, #1877f2 100%);">
+                                                    <i class="fas fa-share-alt"></i>
+                                                </div>
+                                                <h4 class="title is-5">Social Media</h4>
+                                                <ul class="has-text-left">
+                                                    <li>Facebook</li>
+                                                    <li>Twitter</li>
+                                                    <li>YouTube</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="column is-4">
+                                            <div class="has-text-centered">
+                                                <div class="feature-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
+                                                    <i class="fas fa-gamepad"></i>
+                                                </div>
+                                                <h4 class="title is-5">Game Partners</h4>
+                                                <p class="has-text-left">Third-party game developers may use their own cookies for enhanced gameplay and analytics.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cookie Management -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Managing Your Cookie Preferences</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-10">
+                            <div class="card cookie-card">
+                                <div class="card-content">
+                                    <h3 class="title is-4 mb-4">Browser Settings</h3>
+                                    <p class="mb-4">You can control cookies through your browser settings. Here's how:</p>
+                                    
+                                    <div class="columns is-multiline">
+                                        <div class="column is-half">
+                                            <div class="browser-card">
+                                                <div class="is-flex is-align-items-center">
+                                                    <div class="browser-icon">
+                                                        <i class="fab fa-chrome"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h4 class="title is-6 mb-1">Google Chrome</h4>
+                                                        <p class="is-size-7">Settings → Privacy and security → Cookies</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-half">
+                                            <div class="browser-card">
+                                                <div class="is-flex is-align-items-center">
+                                                    <div class="browser-icon">
+                                                        <i class="fab fa-firefox"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h4 class="title is-6 mb-1">Mozilla Firefox</h4>
+                                                        <p class="is-size-7">Options → Privacy & Security → Cookies</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-half">
+                                            <div class="browser-card">
+                                                <div class="is-flex is-align-items-center">
+                                                    <div class="browser-icon">
+                                                        <i class="fab fa-safari"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h4 class="title is-6 mb-1">Safari</h4>
+                                                        <p class="is-size-7">Preferences → Privacy → Manage Website Data</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-half">
+                                            <div class="browser-card">
+                                                <div class="is-flex is-align-items-center">
+                                                    <div class="browser-icon">
+                                                        <i class="fab fa-edge"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h4 class="title is-6 mb-1">Microsoft Edge</h4>
+                                                        <p class="is-size-7">Settings → Privacy, search, and services → Cookies</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="contact-card">
+                                <h2 class="title is-3 has-text-white">Questions About Our Cookie Policy?</h2>
+                                <p class="subtitle is-5 has-text-white-ter mb-5">We're here to help you understand how we use cookies</p>
+                                <div class="buttons is-centered">
+                                    <a href="contact.html" class="button is-white is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <span>Contact Us</span>
+                                    </a>
+                                    <a href="mailto:privacy@playinmo.com" class="button is-white is-outlined is-large">
+                                        <span class="icon">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </span>
+                                        <span>Email Us</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" style="background: #1e293b; color: white;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="is-flex is-align-items-center mb-4">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-gamepad has-text-white"></i>
+                        </div>
+                        <span class="title is-4 has-text-white has-text-weight-bold">PlayInMo</span>
+                    </div>
+                    <p class="has-text-grey-light">Your destination for free online games</p>
+                </div>
+                <div class="column is-half">
+                    <h4 class="title is-5 has-text-white mb-4">Legal</h4>
+                    <ul style="list-style: none;">
+                        <li class="mb-2"><a href="privacy-policy.html" class="has-text-grey-light">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="terms-of-service.html" class="has-text-grey-light">Terms of Service</a></li>
+                        <li class="mb-2"><a href="cookie-policy.html" class="has-text-grey-light">Cookie Policy</a></li>
+                        <li class="mb-2"><a href="responsible-gaming.html" class="has-text-grey-light">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background: #475569;">
+            <div class="has-text-centered">
+                <p class="has-text-grey-light">&copy; 2024 PlayInMo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function updateTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateTheme();
+        });
+        
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateTheme();
+        
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+        
+        // Card hover animations
+        document.querySelectorAll('.cookie-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

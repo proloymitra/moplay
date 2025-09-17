@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PlayInMo</title>
+    <meta name="description" content="Get in touch with PlayInMo team. Contact us for support, partnerships, feedback, or any questions about our gaming platform.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X0LFCXF2N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8X0LFCXF2N', {
+            page_title: 'Contact Us - PlayInMo',
+            page_location: window.location.href,
+            send_page_view: true
+        });
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .icon-container {
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .contact-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            height: 100%;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #667eea;
+        }
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .faq-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .faq-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+        .response-card {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        .response-card:hover {
+            transform: scale(1.05);
+        }
+        .response-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '✉';
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+        .floating-elements::before {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+        .floating-elements::after {
+            top: 60%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        [data-theme="dark"] .faq-card {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        [data-theme="dark"] .faq-card:hover {
+            background: #334155;
+        }
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <i class="fas fa-gamepad has-text-white"></i>
+                </div>
+                <span class="title is-4 has-text-weight-bold" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PlayInMo</span>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="about.html">About</a>
+                <a class="navbar-item is-active" href="contact.html">Contact</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <button id="themeToggle" class="button is-rounded">
+                            <i class="fas fa-sun" id="theme-icon"></i>
+                        </button>
+                        <a class="button is-primary is-rounded" href="/">
+                            <strong>Back to Games</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main style="margin-top: 3.25rem;">
+        <!-- Hero Section -->
+        <section class="hero is-medium hero-gradient">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="floating-elements"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="icon-container">
+                            <i class="fas fa-envelope has-text-white" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h1 class="title is-1 has-text-white has-text-weight-bold">Contact Us</h1>
+                        <p class="subtitle is-4 has-text-white-ter">We'd love to hear from you! Get in touch with our team</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" style="padding: 3rem 1rem;">
+            <!-- Contact Methods Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Get in Touch</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <div class="card contact-card">
+                                <div class="card-content has-text-centered">
+                                    <div class="method-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <h3 class="title is-4">Email Support</h3>
+                                    <p class="mb-4">For general inquiries and support</p>
+                                    <a href="mailto:support@playinmo.com" class="button is-success is-rounded">
+                                        <span class="icon"><i class="fas fa-paper-plane"></i></span>
+                                        <span>support@playinmo.com</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="card contact-card">
+                                <div class="card-content has-text-centered">
+                                    <div class="method-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                        <i class="fas fa-headset"></i>
+                                    </div>
+                                    <h3 class="title is-4">Technical Support</h3>
+                                    <p class="mb-4">For technical issues and bug reports</p>
+                                    <a href="mailto:tech@playinmo.com" class="button is-info is-rounded">
+                                        <span class="icon"><i class="fas fa-tools"></i></span>
+                                        <span>tech@playinmo.com</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="card contact-card">
+                                <div class="card-content has-text-centered">
+                                    <div class="method-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <h3 class="title is-4">Business Partnerships</h3>
+                                    <p class="mb-4">For advertising and partnership opportunities</p>
+                                    <a href="mailto:business@playinmo.com" class="button is-primary is-rounded">
+                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <span>business@playinmo.com</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="card contact-card">
+                                <div class="card-content has-text-centered">
+                                    <div class="method-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <h3 class="title is-4">Game Submissions</h3>
+                                    <p class="mb-4">For developers wanting to submit games</p>
+                                    <a href="mailto:games@playinmo.com" class="button is-warning is-rounded">
+                                        <span class="icon"><i class="fas fa-upload"></i></span>
+                                        <span>games@playinmo.com</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Form Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="card contact-card">
+                                <div class="card-content">
+                                    <h2 class="title is-3 has-text-centered has-text-primary mb-5">Send us a Message</h2>
+                                    <form id="contactForm">
+                                        <div class="columns">
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">First Name *</label>
+                                                    <div class="control has-icons-left">
+                                                        <input class="input" type="text" id="firstName" name="firstName" required>
+                                                        <span class="icon is-small is-left">
+                                                            <i class="fas fa-user"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label">Last Name *</label>
+                                                    <div class="control has-icons-left">
+                                                        <input class="input" type="text" id="lastName" name="lastName" required>
+                                                        <span class="icon is-small is-left">
+                                                            <i class="fas fa-user"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <label class="label">Email Address *</label>
+                                            <div class="control has-icons-left">
+                                                <input class="input" type="email" id="email" name="email" required>
+                                                <span class="icon is-small is-left">
+                                                    <i class="fas fa-envelope"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <label class="label">Subject *</label>
+                                            <div class="control has-icons-left">
+                                                <div class="select is-fullwidth">
+                                                    <select id="subject" name="subject" required>
+                                                        <option value="">Select a subject</option>
+                                                        <option value="general">General Inquiry</option>
+                                                        <option value="support">Technical Support</option>
+                                                        <option value="bug">Bug Report</option>
+                                                        <option value="feedback">Feedback</option>
+                                                        <option value="partnership">Partnership</option>
+                                                        <option value="game-submission">Game Submission</option>
+                                                        <option value="advertising">Advertising</option>
+                                                        <option value="other">Other</option>
+                                                    </select>
+                                                </div>
+                                                <span class="icon is-small is-left">
+                                                    <i class="fas fa-list"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <label class="label">Message *</label>
+                                            <div class="control">
+                                                <textarea class="textarea" id="message" name="message" rows="6" required placeholder="Please provide as much detail as possible..."></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="control">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                                    Subscribe to our newsletter for updates and new game announcements
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="control">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                                    I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and <a href="terms-of-service.html" target="_blank">Terms of Service</a> *
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="control has-text-centered">
+                                                <button type="submit" class="button is-primary is-large pulse-btn">
+                                                    <span class="icon">
+                                                        <i class="fas fa-paper-plane"></i>
+                                                    </span>
+                                                    <span>Send Message</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Frequently Asked Questions</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <div class="faq-card">
+                                <h4 class="title is-5 has-text-info">How do I report a bug or technical issue?</h4>
+                                <p>Please use our contact form above with "Bug Report" as the subject, or email us directly at tech@playinmo.com. Include as much detail as possible about the issue.</p>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="faq-card">
+                                <h4 class="title is-5 has-text-success">How can I submit my game to PlayInMo?</h4>
+                                <p>We welcome game submissions from developers! Please email games@playinmo.com with your game details, or use the contact form with "Game Submission" as the subject.</p>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="faq-card">
+                                <h4 class="title is-5 has-text-warning">How do I recover my account?</h4>
+                                <p>If you're having trouble accessing your account, please contact our support team at support@playinmo.com with your account details.</p>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="faq-card">
+                                <h4 class="title is-5 has-text-primary">Can I advertise on PlayInMo?</h4>
+                                <p>Yes! We offer various advertising opportunities. Please contact business@playinmo.com or visit our <a href="advertise.html">Advertise With Us</a> page for more information.</p>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="faq-card">
+                                <h4 class="title is-5 has-text-danger">How do I delete my account?</h4>
+                                <p>To delete your account and associated data, please contact support@playinmo.com with your request. We'll process it within 48 hours.</p>
+                            </div>
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="faq-card">
+                                <h4 class="title is-5 has-text-link">What browsers are supported?</h4>
+                                <p>PlayInMo works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend keeping your browser updated for the best experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Response Times Section -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="title is-2 has-text-centered has-text-primary mb-6">Response Times</h2>
+                    <div class="columns is-multiline">
+                        <div class="column is-3">
+                            <div class="response-card">
+                                <div class="response-number">24-48h</div>
+                                <div class="has-text-centered">
+                                    <i class="fas fa-clock fa-2x mb-2"></i>
+                                    <h4 class="title is-6 has-text-white">General Inquiries</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="response-card">
+                                <div class="response-number">12-24h</div>
+                                <div class="has-text-centered">
+                                    <i class="fas fa-tools fa-2x mb-2"></i>
+                                    <h4 class="title is-6 has-text-white">Technical Support</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="response-card">
+                                <div class="response-number">< 6h</div>
+                                <div class="has-text-centered">
+                                    <i class="fas fa-exclamation-triangle fa-2x mb-2"></i>
+                                    <h4 class="title is-6 has-text-white">Critical Issues</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="response-card">
+                                <div class="response-number">48-72h</div>
+                                <div class="has-text-centered">
+                                    <i class="fas fa-briefcase fa-2x mb-2"></i>
+                                    <h4 class="title is-6 has-text-white">Business Inquiries</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" style="background: #1e293b; color: white;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="is-flex is-align-items-center mb-4">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-gamepad has-text-white"></i>
+                        </div>
+                        <span class="title is-4 has-text-white has-text-weight-bold">PlayInMo</span>
+                    </div>
+                    <p class="has-text-grey-light">Your destination for free online games</p>
+                </div>
+                <div class="column is-half">
+                    <h4 class="title is-5 has-text-white mb-4">Support</h4>
+                    <ul style="list-style: none;">
+                        <li class="mb-2"><a href="help.html" class="has-text-grey-light">Help Center</a></li>
+                        <li class="mb-2"><a href="contact.html" class="has-text-grey-light">Contact Us</a></li>
+                        <li class="mb-2"><a href="mailto:support@playinmo.com" class="has-text-grey-light">Email Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background: #475569;">
+            <div class="has-text-centered">
+                <p class="has-text-grey-light">&copy; 2024 PlayInMo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function updateTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateTheme();
+        });
+        
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateTheme();
+        
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+        
+        // Contact form functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const requiredFields = ['firstName', 'lastName', 'email', 'subject', 'message', 'privacy'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field);
+                if (!element.value.trim() || (element.type === 'checkbox' && !element.checked)) {
+                    isValid = false;
+                    element.style.borderColor = '#ef4444';
+                } else {
+                    element.style.borderColor = '';
+                }
+            });
+            
+            if (isValid) {
+                alert('Thank you for your message! We will get back to you within 24-48 hours.');
+                this.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Card hover animations
+        document.querySelectorAll('.contact-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
