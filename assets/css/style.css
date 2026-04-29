@@ -1030,26 +1030,33 @@ body:not(.dark-theme) .nav-link.active {
     text-decoration: underline;
 }
 
-/* ====================== HIDE GAME DESCRIPTIONS ====================== */
+/* ====================== FORCE HIDE GAME DESCRIPTIONS ====================== */
 
-/* Strong hide for game descriptions */
-.game-card .card-content .content.is-size-7.has-text-grey,
-.game-card .card-content p.content,
-.game-card p.content.is-size-7,
-.game-card .description {
+.game-card p,
+.game-card .content,
+.game-card .is-size-7,
+.game-card .has-text-grey,
+.game-card .card-content p,
+.game-card .description,
+.game-card .game-description {
     display: none !important;
     visibility: hidden !important;
+    opacity: 0 !important;
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+    line-height: 0 !important;
 }
 
-/* Optional: Clean up spacing after removing description */
-.game-card .card-content {
-    padding-top: 1rem;
-    padding-bottom: 1.25rem;
-}
-
-.game-card .title.is-5 {
-    margin-bottom: 0.75rem !important;
+/* Restore important elements */
+.game-card .game-title,
+.game-card .title,
+.game-card h3,
+.game-card h4,
+.game-card .featured,
+.game-card .difficulty,
+.game-card .rating,
+.game-card .play-btn,
+.game-card button {
+    display: block !important;
 }
