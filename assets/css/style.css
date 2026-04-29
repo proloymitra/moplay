@@ -1032,31 +1032,25 @@ body:not(.dark-theme) .nav-link.active {
 
 /* ====================== FORCE HIDE GAME DESCRIPTIONS ====================== */
 
-.game-card p,
-.game-card .content,
-.game-card .is-size-7,
-.game-card .has-text-grey,
-.game-card .card-content p,
-.game-card .description,
-.game-card .game-description {
+/* Target the exact description element used in game-loader.js */
+.game-card .content.is-size-7.has-text-grey.mb-3,
+.game-card .card-content .content,
+.game-card p.content.is-size-7,
+.game-card .game-description,
+.game-card .description {
     display: none !important;
     visibility: hidden !important;
-    opacity: 0 !important;
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
-    line-height: 0 !important;
+    overflow: hidden !important;
 }
 
-/* Restore important elements */
-.game-card .game-title,
-.game-card .title,
-.game-card h3,
-.game-card h4,
-.game-card .featured,
-.game-card .difficulty,
-.game-card .rating,
-.game-card .play-btn,
-.game-card button {
-    display: block !important;
+/* Extra cleanup */
+.game-card .card-content {
+    padding: 1rem 1.5rem 1.25rem !important;
+}
+
+.game-card .title.is-5 {
+    margin-bottom: 0.8rem !important;
 }
