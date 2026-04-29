@@ -1030,27 +1030,28 @@ body:not(.dark-theme) .nav-link.active {
     text-decoration: underline;
 }
 
-/* ====================== FORCE HIDE GAME DESCRIPTIONS (FINAL) ====================== */
+/* ====================== FORCE HIDE GAME DESCRIPTIONS - FINAL ATTEMPT ====================== */
 
-.game-card .content.is-size-7,
-.game-card .content.has-text-grey,
-.game-card p.content,
-.game-card .card-content p,
-.game-card p.is-size-7,
-.game-card .description,
-.game-card .game-description,
-.game-card .mb-3 {
+.game-card .content.is-size-7.has-text-grey.mb-3,
+.game-card .card-content .content.is-size-7,
+.game-card p.content.is-size-7.has-text-grey,
+.game-card .game-info p,
+.game-card p.mb-3,
+.game-card .description {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+    min-height: 0 !important;
+    line-height: 0 !important;
     overflow: hidden !important;
 }
 
-/* Extra spacing fix */
-.game-card .card-content,
-.game-card .game-info {
-    padding: 1rem 1.5rem 1.25rem !important;
+/* Extra spacing cleanup */
+.game-card .game-info,
+.game-card .card-content {
+    padding-top: 1rem !important;
+    padding-bottom: 1.25rem !important;
 }
