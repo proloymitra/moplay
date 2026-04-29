@@ -131,7 +131,8 @@ class GameLoader {
                     </div>
                     <div class="card-content">
                         <h3 class="title is-5 mb-2">${fields.title}</h3>
-                        <p class="content is-size-7 has-text-grey mb-3">${fields.description || 'Fun game to play!'}</p>
+                        <!-- Description removed -->
+                        <!-- <p class="content is-size-7 has-text-grey mb-3">${fields.description || 'Fun game to play!'}</p> -->
                         
                         <div class="game-meta mb-3">
                             <div class="level is-mobile">
