@@ -1029,3 +1029,8 @@ body:not(.dark-theme) .nav-link.active {
     color: var(--primary-dark);
     text-decoration: underline;
 }
+
+/* Hide game descriptions */
+.game-card .card-content p.content {
+    display: none !important;
+}
