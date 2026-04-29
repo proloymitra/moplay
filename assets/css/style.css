@@ -1030,17 +1030,26 @@ body:not(.dark-theme) .nav-link.active {
     text-decoration: underline;
 }
 
-/* ====================== GAME CARD IMPROVEMENTS ====================== */
+/* ====================== HIDE GAME DESCRIPTIONS ====================== */
 
-/* Hide game descriptions */
-.game-card .card-content p.content,
-.game-card p.content.is-size-7 {
+/* Target all possible description paragraphs in game cards */
+.game-card p,
+.game-card .description,
+.game-card .game-description,
+.game-card .content,
+.game-card .is-size-7,
+.game-card .card-content p {
     display: none !important;
 }
 
-/* Optional: Give more space to title after removing description */
-.game-card .game-info {
-    padding-bottom: 1.25rem;
+/* Keep important elements visible */
+.game-card .game-title,
+.game-card .game-rating,
+.game-card .difficulty,
+.game-card .play-count,
+.game-card .game-play-btn,
+.game-card .featured-badge {
+    display: block !important;
 }
 
 .game-card .game-title {
